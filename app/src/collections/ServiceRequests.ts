@@ -35,9 +35,32 @@ async function notifyNewRequest(doc: any) {
       ].join('\n'),
     })
   } catch (e) {
-    // Loi email khong duoc lam fail thao tac ghi du lieu khach hang — dang ky
-    // da an toan trong DB, email co the gui lai sau.
     console.error('[notifyNewRequest]', e)
+  }
+}
+
+async function notifyTelegram(doc: any) {
+  const token = process.env.TELEGRAM_BOT_TOKEN
+  const chatId = process.env.TELEGRAM_CHAT_ID
+  if (!token || !chatId) return
+  try {
+    const label = SERVICE_LABELS[doc.service as keyof typeof SERVICE_LABELS] ?? doc.service
+    const text = [
+      `🔔 Đăng ký mới #${doc.id}`,
+      `Khách: ${doc.name} — ${doc.phone}`,
+      `Dịch vụ: ${label}`,
+      `Địa chỉ: ${doc.address || '(chưa nhập)'}`,
+      `Ghi chú: ${doc.note || '(không có)'}`,
+      `Nguồn: ${doc.source === 'mcp' ? 'AI (MCP)' : doc.source === 'web' ? 'Web' : doc.source}`,
+      `Link: ${(process.env.NEXT_PUBLIC_SITE_URL ?? '')}/admin/collections/service-requests/${doc.id}`,
+    ].join('\n')
+    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML' }),
+    })
+  } catch (e) {
+    console.error('[notifyTelegram]', e)
   }
 }
 
@@ -55,6 +78,7 @@ export const ServiceRequests: CollectionConfig = {
       ({ doc, operation, previousDoc }) => {
         if (operation === 'create') {
           void notifyNewRequest(doc)
+          void notifyTelegram(doc)
         } else if (previousDoc && previousDoc.status === 'new' && doc?.status !== 'new') {
           safeRevalidateTag('service-requests')
         }

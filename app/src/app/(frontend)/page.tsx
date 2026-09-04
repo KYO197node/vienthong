@@ -43,6 +43,16 @@ const CATEGORY_ICONS: Record<string, string> = {
   'di-dong': '📱',
   'internet-truyen-hinh': '📶',
   'dich-vu-cntt': '💻',
+  'dich-vu-so': '📦',
+  'internet-cap-quang': '📶',
+  'sim-goi-cuoc': '📱',
+  'camera-an-ninh': '📷',
+  'tv-box': '📺',
+  'sim-so': '🔢',
+  'goi-cuoc-4g': '📶',
+  'combo-thoai-data': '💬',
+  'internet-wifi-mesh': '🌐',
+  'truyen-hinh-mytv': '📺',
 }
 
 export default async function HomePage() {
