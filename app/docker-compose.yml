@@ -1,0 +1,114 @@
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-vtngason}
+      POSTGRES_USER: ${POSTGRES_USER:-vtngason}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-thay_mat_khau_manh}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-vtngason}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      # Chi bind localhost: truy cap tu ngoai di qua Cloudflare Tunnel / reverse proxy.
+      # Doi thanh "3005:3000" neu that su muon expose truc tiep ra internet.
+      - "127.0.0.1:3005:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_ADAPTER: postgres
+      DATABASE_URI: postgres://${POSTGRES_USER:-vtngason}:${POSTGRES_PASSWORD:-thay_mat_khau_manh}@db:5432/${POSTGRES_DB:-vtngason}
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
+      MCP_TOKEN: ${MCP_TOKEN}
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://vienthongngason.com}
+      MEDIA_DIR: /app/media
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      EMAIL_FROM_ADDRESS: ${EMAIL_FROM_ADDRESS:-no-reply@vienthongngason.com}
+      EMAIL_FROM_NAME: ${EMAIL_FROM_NAME:-Vien Thong Nga Son}
+    volumes:
+      - app_media:/app/media
+
+  # Chay 1 lan de tao du lieu: docker compose --profile tools run --rm seed
+  seed:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    profiles: ["tools"]
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_ADAPTER: postgres
+      DATABASE_URI: postgres://${POSTGRES_USER:-vtngason}:${POSTGRES_PASSWORD:-thay_mat_khau_manh}@db:5432/${POSTGRES_DB:-vtngason}
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
+      SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL:-admin@vienthongngason.com}
+      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD}
+      MEDIA_DIR: /app/media
+    # Bat buoc mount cung volume voi service `app`, neu khong file upload se ghi
+    # vao filesystem tam cua container va bi mat -> DB co record nhung thieu file.
+    volumes:
+      - app_media:/app/media
+      # Seed doc content/*.md tu day; khong mount thi moi trang deu la
+      # placeholder "dang cap nhat" nhu da tung xay ra.
+      - ../content:/app/content:ro
+    command: npx tsx src/seed.ts
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    profiles: ["tunnel"]
+    command: tunnel --no-autoupdate run
+    environment:
+      TUNNEL_TOKEN: ${TUNNEL_TOKEN}
+    depends_on:
+      - app
+
+  # Backup DB hang ngay luc 3h sang, giu 14 ban gan nhat trong volume db_backup.
+  # Phuc hoi: docker compose --profile backup run --rm db-backup restore
+  db-backup:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    profiles: ["backup"]
+    environment:
+      PGHOST: db
+      PGUSER: ${POSTGRES_USER:-vtngason}
+      PGPASSWORD: ${POSTGRES_PASSWORD:-thay_mat_khau_manh}
+      PGDATABASE: ${POSTGRES_DB:-vtngason}
+    volumes:
+      - db_backup:/backup
+    depends_on:
+      db:
+        condition: service_healthy
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        while true; do
+          ts=$$(date +%Y%m%d-%H%M%S)
+          pg_dump -Fc -f /backup/vtngason-$$ts.dump
+          echo "[db-backup] da luu /backup/vtngason-$$ts.dump"
+          ls -1t /backup/vtngason-*.dump | tail -n +15 | xargs -r rm -f
+          # ngu den 3h sang roi lap lai (busybox sleep khong hoat dong > 1 ngay)
+          while [ $$(date +%H) -ne 3 ]; do sleep 600; done
+          sleep 3600
+        done
+
+volumes:
+  pg_data:
+  app_media:
+  db_backup:

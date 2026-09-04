@@ -1,0 +1,633 @@
+:root {
+  --vt-font: "Be Vietnam Pro", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --vt-primary: #1565c0;
+  --vt-primary-dark: #0d47a1;
+  --vt-primary-light: #e3f0fd;
+  --vt-accent: #ffd200;
+  --vt-price: #e53935;
+  --vt-text: #222;
+  --vt-muted: #667;
+  --vt-border: #e3e8ef;
+  --vt-radius: 8px;
+  --vt-shadow: 0 2px 10px rgba(13, 71, 161, .08);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--vt-font);
+  color: var(--vt-text);
+  background: #f4f7fb;
+  line-height: 1.6;
+}
+a { color: var(--vt-primary); text-decoration: none; }
+a:hover { color: var(--vt-primary-dark); }
+img { max-width: 100%; height: auto; }
+.vt-container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+
+/* ===== A11y helpers ===== */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+/* Focus ring nhat quan cho dieu huong bang ban phim. */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--vt-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.vt-skip {
+  position: absolute; left: -9999px; top: 0; z-index: 200;
+  background: var(--vt-primary-dark); color: #fff; padding: 12px 20px;
+  font-weight: 700; border-radius: 0 0 8px 0;
+}
+.vt-skip:focus { left: 0; color: #fff; }
+
+/* ===== Header =====
+   Bo cuc 3 phan: logo thuong hieu (trai) — o tim kiem (giua) — hotline + logo
+   doi tac VNPT (phai). */
+.vt-header { background: #fff; box-shadow: var(--vt-shadow); position: relative; z-index: 50; }
+.vt-header-main { display: flex; align-items: center; gap: 20px; padding: 12px 0; }
+.vt-logo-link { display: flex; align-items: center; gap: 10px; }
+/* Chieu cao co dinh, chieu rong tu dong -> logo khong bi meo va khong day layout. */
+.vt-logo-link img { height: 54px; width: auto; display: block; }
+.vt-logo-text { line-height: 1.25; display: block; }
+.vt-logo-text strong {
+  display: block; font-size: 22px; font-weight: 800;
+  color: var(--vt-primary-dark); text-transform: uppercase;
+}
+.vt-logo-text span { display: block; font-size: 12px; color: #a07a00; font-weight: 700; letter-spacing: .4px; }
+.vt-search { flex: 1; max-width: 460px; }
+.vt-search form { display: flex; border: 2px solid var(--vt-primary); border-radius: 20px; overflow: hidden; background: #fff; }
+.vt-search input { flex: 1; border: 0; outline: 0; padding: 9px 16px; font-size: 14px; font-family: inherit; }
+.vt-search button { border: 0; background: var(--vt-primary); color: #fff; padding: 0 18px; cursor: pointer; font-size: 15px; }
+.vt-search button:hover { background: var(--vt-primary-dark); }
+
+.vt-header-right { margin-left: auto; display: flex; align-items: center; gap: 18px; }
+.vt-header-hotline { text-align: right; line-height: 1.3; display: block; }
+.vt-header-hotline strong { display: block; font-size: 20px; font-weight: 800; color: var(--vt-price); }
+.vt-header-hotline__label { display: block; font-size: 12px; color: var(--vt-muted); }
+
+/* Logo doi tac: tach bang vach doc, chu thich nho de khong tranh voi hotline. */
+.vt-header-partner {
+  display: flex; align-items: center; gap: 9px;
+  padding-left: 18px; border-left: 1px solid var(--vt-border);
+}
+.vt-header-partner img { height: 42px; width: auto; display: block; }
+.vt-header-partner__label {
+  font-size: 10.5px; font-weight: 700; line-height: 1.3;
+  color: var(--vt-muted); text-transform: uppercase; letter-spacing: .3px; max-width: 84px;
+}
+
+/* ===== Nav ===== */
+.vt-nav { border-top: 1px solid var(--vt-border); background: #fff; position: relative; }
+.vt-nav-bar { display: flex; align-items: center; gap: 8px; }
+.vt-nav-panel { flex: 1; }
+.vt-nav-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; }
+.vt-nav-list > li { position: relative; }
+.vt-nav-row { display: flex; align-items: center; }
+.vt-nav-row > a { display: block; padding: 11px 16px; color: var(--vt-text); font-weight: 600; font-size: 14.5px; }
+.vt-nav-row > a:hover { color: var(--vt-primary); }
+.vt-nav-caret {
+  background: none; border: 0; cursor: pointer; color: var(--vt-muted);
+  padding: 11px 10px 11px 0; font-size: 13px; line-height: 1;
+}
+.vt-nav-caret:hover { color: var(--vt-primary); }
+.vt-burger {
+  display: none; background: none; border: 0; font-size: 22px; cursor: pointer;
+  color: var(--vt-primary-dark); padding: 10px 12px; min-height: 44px; min-width: 44px;
+}
+.vt-nav-search { display: none; }
+
+/* ===== Menu danh muc 2 tang =====
+   Tang 1 (cot doc): chi 3 danh muc goc — DI DONG / INTERNET-TRUYEN HINH / DICH VU CNTT.
+   Tang 2 (bang ngang): chi bung ra khi tro vao mot danh muc goc, hien danh muc
+   con cua rieng danh muc do. Cach nay tranh do ca 16 danh muc ra cung luc. */
+.vt-nav-hascat { position: relative; }
+.vt-catmenu {
+  position: absolute; top: 100%; left: 0; z-index: 60; display: flex; align-items: stretch;
+  opacity: 0; visibility: hidden; transform: translateY(6px);
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+  filter: drop-shadow(0 16px 30px rgba(13, 71, 161, .18));
+}
+.vt-catmenu.open { opacity: 1; visibility: visible; transform: translateY(0); }
+
+.vt-catmenu__roots {
+  list-style: none; margin: 0; padding: 6px; flex: 0 0 auto; min-width: 268px;
+  background: #fff; border: 1px solid #dbe6f5; border-top: 3px solid var(--vt-primary);
+  border-radius: 0 0 10px 10px;
+}
+.vt-catmenu__roots > li { position: relative; }
+.vt-catmenu__roots > li > a {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 12px 14px; border-radius: 7px;
+  font-weight: 800; font-size: 14px; color: var(--vt-primary-dark);
+  text-transform: uppercase; letter-spacing: .2px;
+}
+.vt-catmenu__roots > li:hover > a,
+.vt-catmenu__roots > li.active > a { background: var(--vt-primary-light); color: var(--vt-primary); }
+.vt-catmenu__arrow { font-size: 18px; opacity: .55; }
+.vt-catmenu__roots > li.active .vt-catmenu__arrow { opacity: 1; }
+/* Nut +/- chi dung tren mobile. */
+.vt-catmenu__toggle { display: none; }
+.vt-catmenu__sub { display: none; }
+
+.vt-catmenu__panel {
+  flex: 0 0 auto; width: min(620px, 62vw); padding: 18px 22px;
+  background: #fff; border: 1px solid #dbe6f5; border-top: 3px solid var(--vt-primary);
+  border-left: 0; border-radius: 0 0 10px 0;
+}
+.vt-catmenu__panel-head { margin: 0 0 12px; padding-bottom: 10px; border-bottom: 2px solid var(--vt-primary-light); }
+.vt-catmenu__panel-head a {
+  font-weight: 800; font-size: 14px; color: var(--vt-primary-dark);
+  text-transform: uppercase; letter-spacing: .3px;
+}
+.vt-catmenu__grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 2px 14px;
+}
+.vt-catmenu__grid a {
+  display: block; padding: 8px 10px; border-radius: 6px;
+  font-size: 13.5px; font-weight: 500; color: #334;
+}
+.vt-catmenu__grid a:hover { background: var(--vt-primary-light); color: var(--vt-primary-dark); }
+.vt-catmenu__panel-foot { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--vt-border); }
+.vt-catmenu__panel-foot a { font-weight: 700; font-size: 13.5px; }
+
+/* ===== Hero slider ===== */
+.vt-hero { position: relative; overflow: hidden; background: var(--vt-primary-dark); border-radius: 0 0 14px 14px; }
+
+/* Logo doi tac lam hinh nen mo. Nam duoi noi dung slide (z-index 0 vs 1) va
+   opacity thap de khong lam giam do tuong phan cua chu tren banner. */
+.vt-hero__watermark {
+  position: absolute; right: 24px; bottom: 18px; z-index: 0;
+  width: 420px; max-width: 52%; opacity: .14; pointer-events: none;
+}
+.vt-hero__watermark img {
+  width: 100%; height: auto; display: block;
+  /* Logo VNPT nhieu mau -> ep ve trang de hoa vao nen xanh cua banner. */
+  filter: brightness(0) invert(1);
+}
+.vt-slide { display: none; position: relative; z-index: 1; min-height: 300px; align-items: center; }
+.vt-slide.active { display: flex; }
+.vt-slide:nth-child(1) { background: linear-gradient(120deg, #0d47a1 0%, #1976d2 55%, #42a5f5 100%); }
+.vt-slide:nth-child(2) { background: linear-gradient(120deg, #0b3d91 0%, #1565c0 60%, #ffd200 160%); }
+.vt-slide:nth-child(3) { background: linear-gradient(120deg, #1565c0 0%, #1e88f0 70%, #4fc3f7 100%); }
+.vt-slide-inner { max-width: 640px; padding: 48px 15px; margin: 0 auto; text-align: center; color: #fff; width: 100%; }
+.vt-slide-inner h2 { font-size: 34px; margin: 0 0 10px; font-weight: 800; text-shadow: 0 2px 8px rgba(0, 0, 0, .25); }
+.vt-slide-inner p { font-size: 17px; margin: 0 0 20px; color: var(--vt-primary-light); }
+.vt-hero-dots { position: absolute; bottom: 14px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; }
+.vt-hero-dots button {
+  width: 12px; height: 12px; border-radius: 50%; border: 0;
+  background: rgba(255, 255, 255, .55); cursor: pointer; padding: 0;
+}
+.vt-hero-dots button.active { background: var(--vt-accent); width: 26px; border-radius: 6px; }
+
+/* ===== Buttons ===== */
+.vt-btn {
+  display: inline-block; background: var(--vt-accent); color: #1a1a00;
+  font-weight: 800; padding: 11px 28px; border-radius: 24px;
+}
+.vt-btn:hover { background: #fff; color: var(--vt-primary-dark); }
+.vt-btn--primary { background: var(--vt-price); color: #fff; }
+.vt-btn--primary:hover { background: #c62828; color: #fff; }
+.vt-btn--outline { background: #fff; color: var(--vt-primary-dark); border: 2px solid var(--vt-primary); }
+.vt-btn--outline:hover { background: var(--vt-primary); color: #fff; }
+
+/* ===== Sections ===== */
+.vt-section { margin: 30px 0; }
+.vt-section-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin-bottom: 14px; border-bottom: 3px solid var(--vt-primary); padding-bottom: 8px;
+}
+.vt-section-head h2 {
+  margin: 0; font-size: 20px; font-weight: 800; color: var(--vt-primary-dark);
+  text-transform: uppercase; position: relative; padding-left: 14px;
+}
+.vt-section-head h2::before {
+  content: ""; position: absolute; left: 0; top: 3px; bottom: 3px;
+  width: 5px; background: var(--vt-accent); border-radius: 3px;
+}
+.vt-section-head .vt-more { font-size: 13.5px; font-weight: 700; white-space: nowrap; }
+
+/* ===== Quick links (danh muc goc) ===== */
+.vt-quicklinks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.vt-quicklink {
+  display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%;
+  background: #fff; border: 1.5px solid var(--vt-border); border-radius: 14px;
+  padding: 18px 12px; text-align: center; color: inherit;
+  transition: box-shadow .15s, transform .15s, border-color .15s;
+}
+.vt-quicklink:hover {
+  box-shadow: 0 6px 18px rgba(21, 101, 192, .15);
+  transform: translateY(-2px); border-color: var(--vt-primary);
+}
+.vt-quicklink-icon { font-size: 30px; line-height: 1; }
+.vt-quicklink strong { color: var(--vt-primary-dark); font-size: 15px; }
+.vt-quicklink small { color: var(--vt-muted); font-size: 12.5px; line-height: 1.45; }
+
+/* ===== Hot deal banner ===== */
+.vt-hotdeal {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  background: linear-gradient(100deg, var(--vt-primary), var(--vt-primary-dark));
+  color: #fff; border-radius: 16px; padding: 22px 28px;
+}
+.vt-hotdeal h2 { margin: 0 0 6px; font-size: 22px; color: var(--vt-accent); }
+.vt-hotdeal p { margin: 0; }
+.vt-hotdeal strong { color: var(--vt-accent); }
+
+/* ===== Why us ===== */
+.vt-whyus { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.vt-whyus-item { background: var(--vt-primary-light); border-radius: 14px; padding: 18px; }
+.vt-whyus-icon { font-size: 26px; line-height: 1; display: block; margin-bottom: 6px; }
+.vt-whyus-item h3 { color: var(--vt-primary-dark); font-size: 16px; margin: 0 0 6px; }
+.vt-whyus-item p { margin: 0; font-size: 13.5px; color: #444; line-height: 1.55; }
+
+/* ===== CTA strip ===== */
+.vt-cta {
+  background: linear-gradient(90deg, var(--vt-primary-dark), var(--vt-primary));
+  border-radius: 12px; color: #fff; padding: 26px 30px; display: flex;
+  align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 34px 0;
+}
+.vt-cta h2 { margin: 0 0 4px; font-size: 22px; color: #fff; }
+.vt-cta p { margin: 0; color: #dbe9ff; }
+.vt-cta a:not(.vt-btn) { color: var(--vt-accent); font-weight: 800; }
+
+/* ===== Pack grid + card — dang bang gia =====
+   Grid auto-fill theo chieu rong thoi da cho: 160px/thi desktop 1200px -> 7 cot
+   (kieu bang gia cua VNPT), tablet 4-5 cot, mobile 2 cot. Khong con media query
+   cung cho so cot nua. */
+.pack-grid, .products-packgrid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.pack-card {
+  display: flex; flex-direction: column; background: #fff; border: 1px solid #e3ecf7;
+  border-radius: 10px; overflow: hidden; box-shadow: 0 1px 6px rgba(13, 71, 161, .05);
+  transition: box-shadow .15s, transform .15s; position: relative;
+}
+.pack-card:hover { box-shadow: 0 6px 18px rgba(13, 71, 161, .14); transform: translateY(-2px); }
+
+/* Ty le co dinh -> khong nhay layout khi anh tai xong (CLS = 0). */
+.pack-card__media { display: block; aspect-ratio: 16 / 10; background: var(--vt-primary-light); overflow: hidden; position: relative; }
+.pack-card__img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pack-card__img--empty { display: flex; align-items: center; justify-content: center; font-size: 26px; }
+
+/* Badge HOT: gan goc trai tren anh, nho de khong che tieu de. */
+.pack-card__hot {
+  position: absolute; top: 0; left: 0;
+  background: #ff5722; color: #fff; font-size: 9.5px; font-weight: 800;
+  padding: 2px 7px; letter-spacing: .5px; border-radius: 0 0 8px 0;
+}
+
+/* Tieu de: text thuan, clamp 2 dong, ca khoi la link vao chi tiet. */
+.pack-card__title {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  padding: 7px 9px 0; font-size: 13.5px; font-weight: 800; line-height: 1.35;
+  color: var(--vt-primary-dark); min-height: 42px;
+}
+.pack-card__title:hover { color: var(--vt-primary); }
+
+/* Gia: mot hang gon — so to, don vi nho, badge chu ky ke canh. */
+.pack-card__price {
+  display: flex; align-items: baseline; gap: 4px; flex-wrap: wrap;
+  padding: 5px 9px 7px; color: var(--vt-price); font-size: 16px; font-weight: 800; line-height: 1.25;
+}
+/* "Lien he" khong phai gia -> khong to do dam nhu gia tien. */
+.pack-card__price--request { color: var(--vt-primary-dark); font-size: 13px; }
+.pack-card__unit { font-size: 11px; font-weight: 600; color: var(--vt-muted); }
+.pack-card__cycle-badge {
+  display: inline-block; padding: 1px 6px; border-radius: 10px;
+  font-size: 10.5px; font-weight: 700;
+  background: var(--vt-primary-light); color: var(--vt-primary-dark);
+}
+
+/* Duy nhat 1 nut, full rong. */
+.pack-card__btn {
+  display: block; text-align: center; padding: 8px; margin: 6px 7px 7px; margin-top: auto;
+  border-radius: 14px; border: 1.4px solid var(--vt-primary); color: var(--vt-primary);
+  font-weight: 800; font-size: 12.5px;
+}
+.pack-card__btn:hover { background: var(--vt-primary); color: #fff; }
+
+/* ===== Pack filter / trang thai ===== */
+.pack-filter {
+  display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+  background: #fff; border: 1.5px solid var(--vt-border); border-radius: 12px;
+  padding: 12px 16px; margin-bottom: 14px;
+}
+.pack-filter__field { flex: 1; min-width: 220px; display: block; }
+.pack-filter__input {
+  width: 100%; padding: 10px 14px; border: 1.5px solid var(--vt-border);
+  border-radius: 8px; font-size: 15px; font-family: inherit; outline: none;
+}
+.pack-filter__input:focus { border-color: var(--vt-primary); }
+.pack-filter__sort { font-size: 14px; color: #444; }
+.pack-filter__sort select { padding: 8px 10px; border-radius: 8px; border: 1.5px solid var(--vt-border); font-family: inherit; }
+.pack-count { margin: 0 0 14px; font-size: 13.5px; color: var(--vt-muted); }
+.pack-empty { padding: 20px 0; color: #556; }
+
+/* ===== Trang thai trong ===== */
+.vt-empty {
+  background: #fff; border: 1.5px dashed var(--vt-border); border-radius: 14px;
+  padding: 28px 24px; text-align: center; color: #556;
+}
+.vt-empty p { margin: 0 0 6px; }
+.vt-empty p:last-child { margin-bottom: 0; }
+
+/* ===== Panel CTA nhe ===== */
+.vt-panel { background: var(--vt-primary-light); border-radius: 14px; padding: 26px; text-align: center; }
+.vt-panel h2 { margin: 0 0 8px; font-size: 20px; color: var(--vt-primary-dark); }
+.vt-panel p { margin: 0; }
+.vt-panel__tel { font-weight: 800; color: var(--vt-price); }
+
+/* ===== Dieu huong danh muc =====
+   Cuon ngang thay vi xuong dong: giu chieu cao on dinh khi co nhieu danh muc. */
+.vt-subcats {
+  display: flex; gap: 8px; margin-bottom: 18px;
+  overflow-x: auto; padding-bottom: 4px;
+  scrollbar-width: thin; -webkit-overflow-scrolling: touch;
+}
+.vt-subcats a {
+  background: #fff; border: 1.5px solid var(--vt-border); border-radius: 20px;
+  padding: 7px 16px; font-size: 14px; font-weight: 600; color: var(--vt-primary-dark);
+  white-space: nowrap; flex: 0 0 auto;
+}
+.vt-subcats a:hover { border-color: var(--vt-primary); background: var(--vt-primary-light); }
+
+/* Thanh danh muc tren /shop: cac cot xep ngang, cuon ngang khi hep. */
+.vt-catnav {
+  display: flex; gap: 28px; margin-bottom: 22px;
+  background: #fff; border: 1.5px solid var(--vt-border); border-radius: 12px; padding: 18px;
+  overflow-x: auto; scrollbar-width: thin; -webkit-overflow-scrolling: touch;
+}
+.vt-catnav__group { min-width: 190px; flex: 0 0 auto; }
+.vt-catnav__root {
+  display: block; font-weight: 800; font-size: 14.5px; color: var(--vt-primary-dark);
+  text-transform: uppercase; padding-bottom: 6px; border-bottom: 2px solid var(--vt-primary-light);
+  margin-bottom: 8px;
+}
+.vt-catnav__children { list-style: none; margin: 0; padding: 0; }
+.vt-catnav__children li { margin-bottom: 5px; }
+.vt-catnav__children a { font-size: 13.5px; color: #445; }
+.vt-catnav__children a:hover { color: var(--vt-primary); }
+
+/* ===== Content pages ===== */
+.vt-page { background: #fff; border-radius: var(--vt-radius); border: 1px solid var(--vt-border); padding: 30px 34px; margin: 26px 0; }
+.vt-page h1 { color: var(--vt-primary-dark); font-size: 26px; margin-top: 0; }
+.vt-page h2 { color: var(--vt-primary); font-size: 20px; border-left: 5px solid var(--vt-accent); padding-left: 10px; margin-top: 28px; }
+.vt-page h3 { color: var(--vt-primary-dark); font-size: 17px; }
+.vt-page table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+.vt-page th, .vt-page td { border: 1px solid var(--vt-border); padding: 8px 12px; text-align: left; font-size: 14.5px; }
+.vt-page th { background: var(--vt-primary-light); }
+.vt-page blockquote { border-left: 4px solid var(--vt-accent); margin: 14px 0; padding: 8px 16px; background: #fffdf2; }
+
+/* ===== Trang san pham ===== */
+.vt-product__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 28px; align-items: start; }
+.vt-product__media { border-radius: 12px; overflow: hidden; background: var(--vt-primary-light); }
+.vt-product__media img { width: 100%; height: auto; display: block; }
+.vt-product__info h1 { margin-top: 0; }
+.vt-product__price { font-size: 30px; color: var(--vt-price); font-weight: 800; margin: 6px 0 12px; }
+.vt-product__price--request { font-size: 22px; color: var(--vt-primary-dark); }
+.vt-product__price del { opacity: .5; font-size: 18px; margin-right: 8px; font-weight: 400; }
+.vt-product__lead { font-size: 16px; color: #445; }
+.vt-product__actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 20px 0 0; }
+
+/* ===== Trang tim kiem ===== */
+.vt-searchpage { display: flex; gap: 8px; max-width: 480px; margin: 16px 0; }
+.vt-searchpage input {
+  flex: 1; padding: 10px 14px; border: 1.5px solid var(--vt-border);
+  border-radius: 8px; font-family: inherit; font-size: 15px;
+}
+.vt-searchpage input:focus { border-color: var(--vt-primary); outline: none; }
+.vt-searchpage button {
+  background: var(--vt-primary); color: #fff; border: 0; border-radius: 8px;
+  padding: 10px 20px; font-weight: 700; cursor: pointer; font-family: inherit;
+}
+.vt-searchpage button:hover { background: var(--vt-primary-dark); }
+.vt-searchpage__count { font-size: 13.5px; color: var(--vt-muted); margin: 0 0 12px; }
+.vt-results { list-style: none; padding: 0; margin: 0; }
+.vt-results li { padding: 14px 0; border-bottom: 1px solid var(--vt-border); }
+.vt-results li > a { font-weight: 700; font-size: 16px; }
+.vt-results__price { font-size: 14px; font-weight: 700; color: var(--vt-price); margin-left: 10px; }
+.vt-results p { margin: 4px 0 0; color: #556; font-size: 14px; }
+
+/* ===== Pagination ===== */
+.vt-pagination { margin: 24px 0; display: flex; gap: 6px; flex-wrap: wrap; }
+.vt-pagination .page-numbers {
+  background: #fff; border: 1px solid var(--vt-border); border-radius: 6px;
+  padding: 8px 14px; font-weight: 700; color: var(--vt-text); min-height: 40px;
+}
+.vt-pagination .page-numbers.current,
+.vt-pagination a.page-numbers:hover { background: var(--vt-primary); color: #fff; border-color: var(--vt-primary); }
+
+/* ===== News cards ===== */
+.news-packgrid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.news-card {
+  background: #fff; border: 1px solid #dbe6f5; border-radius: 12px; overflow: hidden;
+  display: flex; flex-direction: column; transition: transform .18s ease, box-shadow .18s ease;
+}
+.news-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(13, 71, 161, .14); }
+.news-card__thumb {
+  display: block; aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, var(--vt-primary), var(--vt-primary-dark)); overflow: hidden;
+}
+.news-card__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.news-card__noimg { display: flex; align-items: center; justify-content: center; height: 100%; font-size: 44px; }
+.news-card__body { padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.news-card__body time { font-size: 12.5px; color: #889; text-transform: uppercase; letter-spacing: .4px; }
+.news-card__body h2, .news-card__body h3 { margin: 0; font-size: 16px; line-height: 1.35; }
+.news-card__body h2 a, .news-card__body h3 a { color: var(--vt-text); }
+.news-card__body h2 a:hover, .news-card__body h3 a:hover { color: var(--vt-primary); }
+.news-card__body p { margin: 0; font-size: 13.5px; color: #556; }
+.news-card__more { margin-top: auto; font-size: 13.5px; font-weight: 700; color: var(--vt-primary); }
+
+/* ===== Register layout ===== */
+.reg-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .85fr); gap: 28px; align-items: start; margin-top: 18px; }
+.reg-form-col { background: #fff; border: 1px solid #dbe6f5; border-radius: 14px; padding: 22px; }
+.reg-info-col { background: #f4f8fe; border: 1px solid #dbe6f5; border-radius: 14px; padding: 22px; }
+.reg-contact { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 15px; }
+.reg-contact__tel { font-weight: 800; color: var(--vt-price); font-size: 19px; }
+
+/* ===== Footer ===== */
+.vt-footer { background: var(--vt-primary-dark); color: #cfe0f5; margin-top: 40px; font-size: 14px; }
+.vt-footer a { color: #fff; }
+.vt-footer a:hover { color: var(--vt-accent); }
+.vt-footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1.2fr 1fr; gap: 28px; padding: 36px 0 28px; }
+.vt-footer h4 { color: var(--vt-accent); font-size: 15px; text-transform: uppercase; margin: 0 0 14px; letter-spacing: .5px; }
+.vt-footer ul { list-style: none; margin: 0; padding: 0; }
+.vt-footer ul li { margin-bottom: 8px; }
+.vt-footer-about strong { color: #fff; font-size: 17px; display: block; margin-bottom: 6px; }
+.vt-footer-about p { margin: 0 0 6px; }
+
+/* Badge doi tac o footer: logo hien ro (khong phai watermark). */
+.vt-partner {
+  display: flex; align-items: center; gap: 10px;
+  margin: 14px 0 0 !important; padding: 10px 12px;
+  background: rgba(255, 255, 255, .95); border-radius: 8px; width: fit-content;
+}
+.vt-partner img { width: 150px; height: auto; display: block; }
+.vt-partner span { font-size: 11.5px; font-weight: 700; color: var(--vt-primary-dark); line-height: 1.3; max-width: 110px; }
+.vt-copyright { border-top: 1px solid rgba(255, 255, 255, .15); padding: 14px 0; text-align: center; font-size: 13px; color: #9dbbe0; }
+
+/* ===== Floating buttons ===== */
+.vt-float { position: fixed; right: 16px; bottom: 90px; z-index: 999; display: flex; flex-direction: column; gap: 10px; }
+.vt-float__btn {
+  width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  color: #fff; box-shadow: 0 4px 14px rgba(0, 0, 0, .25); transition: transform .15s;
+}
+.vt-float__btn:hover { transform: scale(1.08); color: #fff; }
+.vt-float__btn svg { width: 26px; height: 26px; }
+.vt-float__text { font-size: 13px; font-weight: 800; letter-spacing: .3px; }
+.vt-f-call { background: #1b8f3a; }
+.vt-f-zalo { background: #0168a8; }
+.vt-f-msg { background: linear-gradient(45deg, #0070d8, #8b28e0); }
+.vt-backtop {
+  position: fixed; right: 16px; bottom: 30px; z-index: 999; width: 46px; height: 46px;
+  border-radius: 8px; border: 0; background: var(--vt-primary-dark); color: #fff;
+  font-size: 18px; cursor: pointer;
+}
+.vt-backtop:hover { background: var(--vt-primary); }
+
+/* ===== Rich text (lexical) ===== */
+.vt-content p { margin: 0 0 12px; }
+.vt-content h2 { color: var(--vt-primary); font-size: 20px; border-left: 5px solid var(--vt-accent); padding-left: 10px; margin: 22px 0 10px; }
+.vt-content h3 { color: var(--vt-primary-dark); font-size: 17px; margin: 18px 0 8px; }
+.vt-content ul, .vt-content ol { margin: 0 0 12px 22px; }
+.vt-content li { margin-bottom: 6px; }
+.vt-content a { text-decoration: underline; }
+.vt-content table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+.vt-content th, .vt-content td { border: 1px solid var(--vt-border); padding: 8px 12px; font-size: 14.5px; }
+.vt-content th { background: var(--vt-primary-light); }
+
+/* ===== Form ===== */
+.vt-form { display: grid; gap: 14px; max-width: 560px; }
+.vt-form label { font-weight: 600; font-size: 14px; display: block; margin-bottom: 5px; }
+.vt-form input, .vt-form select, .vt-form textarea {
+  width: 100%; padding: 10px 14px; border: 1.5px solid var(--vt-border); border-radius: 8px;
+  font-size: 15px; font-family: inherit; outline: none; background: #fff;
+}
+.vt-form input:focus, .vt-form select:focus, .vt-form textarea:focus { border-color: var(--vt-primary); }
+.vt-form button[type=submit] {
+  background: var(--vt-primary); color: #fff; border: 0; border-radius: 24px; padding: 13px;
+  font-size: 16px; font-weight: 800; cursor: pointer; font-family: inherit;
+}
+.vt-form button[type=submit]:hover { background: var(--vt-primary-dark); }
+.vt-form button[type=submit]:disabled { background: #90a4bd; cursor: not-allowed; }
+.vt-form .vt-msg { padding: 10px 14px; border-radius: 8px; font-weight: 600; }
+.vt-form .vt-msg.ok { background: #e6f7ec; color: #137a37; }
+.vt-form .vt-msg.err { background: #fdecec; color: #b3261e; }
+
+/* ===== Breadcrumb ===== */
+.vt-breadcrumb { font-size: 13px; color: var(--vt-muted); margin: 14px 0 0; }
+.vt-breadcrumb a { color: var(--vt-muted); }
+.vt-breadcrumb a:hover { color: var(--vt-primary); }
+
+/* ===== Danh muc head ===== */
+.vt-cat-head h1 { color: var(--vt-primary-dark); font-size: 26px; margin: 10px 0 4px; }
+.vt-cat-desc { color: var(--vt-muted); margin: 0 0 16px; }
+
+/* ===== Responsive =====
+   Breakpoint gom lai con 4 moc: 1100 / 900 / 767 / 520
+   (truoc day co 10 moc roi rac: 520/560/640/760/767/900/991/1000/1100/1200) */
+@media (max-width: 1100px) {
+  .news-packgrid { grid-template-columns: repeat(2, 1fr); }
+  .vt-footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 900px) {
+  .vt-whyus { grid-template-columns: repeat(2, 1fr); }
+  .vt-hotdeal { flex-direction: column; text-align: center; }
+  .reg-layout { grid-template-columns: 1fr; }
+  .vt-product__grid { grid-template-columns: 1fr; }
+  .vt-search { display: none; }
+  /* Chu thich doi tac an di, chi giu logo — tranh header chat chu. */
+  .vt-header-partner__label { display: none; }
+}
+
+@media (max-width: 767px) {
+  .vt-header-main { flex-wrap: wrap; gap: 10px; }
+  .vt-burger { display: flex; align-items: center; justify-content: center; }
+  /* Logo nho lai, hai logo van dung hai ben tren cung mot hang. */
+  .vt-logo-link img { height: 42px; }
+  .vt-header-right { gap: 12px; }
+  .vt-header-hotline strong { font-size: 17px; }
+  .vt-header-partner { padding-left: 12px; }
+  .vt-header-partner img { height: 32px; }
+
+  /* Menu mobile: dong mo bang click (state React), khong phu thuoc :hover. */
+  .vt-nav-bar { flex-wrap: wrap; }
+  .vt-nav-panel { display: none; width: 100%; padding-bottom: 12px; }
+  .vt-nav-panel.open { display: block; }
+  .vt-nav-list { flex-direction: column; }
+  .vt-nav-row { justify-content: space-between; border-bottom: 1px solid var(--vt-border); }
+  .vt-nav-row > a { flex: 1; padding: 13px 4px; }
+  .vt-nav-caret { padding: 13px 12px; }
+
+  /* O tim kiem hien trong menu vi o header bi an tu 900px. */
+  .vt-nav-search { display: flex; gap: 8px; padding: 12px 0; }
+  .vt-nav-search input {
+    flex: 1; padding: 10px 14px; border: 1.5px solid var(--vt-border);
+    border-radius: 8px; font-family: inherit; font-size: 15px;
+  }
+  .vt-nav-search button {
+    background: var(--vt-primary); color: #fff; border: 0; border-radius: 8px;
+    padding: 10px 18px; font-weight: 700; cursor: pointer; font-family: inherit;
+  }
+
+  /* Menu danh muc tren mobile: hien inline theo chieu doc.
+     Khong the bung bang ngang sang ben nen danh muc con hien ngay duoi
+     danh muc goc, dong mo bang nut +/-. */
+  .vt-catmenu {
+    position: static; display: block; opacity: 1; visibility: hidden; transform: none;
+    filter: none; height: 0; overflow: hidden;
+  }
+  .vt-catmenu.open {
+    visibility: visible; height: auto;
+    border-left: 3px solid var(--vt-primary-light);
+  }
+  .vt-catmenu__roots {
+    min-width: 0; border: 0; border-radius: 0; padding: 4px 0 4px 12px;
+  }
+  .vt-catmenu__roots > li > a { padding: 11px 8px; font-size: 13.5px; }
+  .vt-catmenu__arrow { display: none; }
+  .vt-catmenu__toggle {
+    display: flex; align-items: center; justify-content: center;
+    position: absolute; top: 2px; right: 0; width: 40px; height: 40px;
+    background: none; border: 0; cursor: pointer;
+    font-size: 20px; line-height: 1; color: var(--vt-primary-dark);
+  }
+  .vt-catmenu__sub { list-style: none; margin: 0 0 6px; padding: 0 0 0 14px; }
+  .vt-catmenu__sub.open { display: block; }
+  .vt-catmenu__sub a { display: block; padding: 9px 8px; font-size: 13.5px; color: #334; }
+  .vt-catmenu__sub a:hover { color: var(--vt-primary); }
+  /* Bang ngang bi an tren mobile — da co .vt-catmenu__sub thay the. */
+  .vt-catmenu__panel { display: none; }
+
+  .vt-quicklinks { grid-template-columns: 1fr; }
+  .vt-slide-inner h2 { font-size: 24px; }
+  /* Watermark nho lai tren mobile, tranh de len chu trong banner. */
+  .vt-hero__watermark { right: 12px; bottom: 10px; width: 200px; max-width: 46%; opacity: .1; }
+  .vt-page { padding: 20px 16px; }
+  .vt-footer-grid { grid-template-columns: 1fr; }
+  .vt-float { bottom: 76px; }
+}
+
+@media (max-width: 520px) {
+  .news-packgrid { grid-template-columns: 1fr; }
+  .vt-whyus { grid-template-columns: 1fr; }
+  .vt-product__price { font-size: 26px; }
+  /* May rat hep: an nhan chu hotline, giu so + ca hai logo. */
+  .vt-header-hotline__label { display: none; }
+  .vt-logo-link img { height: 36px; }
+  .vt-header-partner img { height: 28px; }
+}
+
+/* Ton trong tuy chon giam chuyen dong cua he thong. */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .pack-card:hover, .news-card:hover, .vt-quicklink:hover, .vt-float__btn:hover { transform: none; }
+}

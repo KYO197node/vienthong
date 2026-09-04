@@ -1,0 +1,41 @@
+{
+  "name": "vtngason-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "generate:types": "payload generate:types",
+    "generate:importmap": "payload generate:importmap",
+    "migrate": "payload migrate",
+    "migrate:create": "payload migrate:create",
+    "migrate:status": "payload migrate:status",
+    "seed": "payload run ./src/seed.ts"
+  },
+  "dependencies": {
+    "@payloadcms/db-postgres": "^3.35.0",
+    "@payloadcms/db-sqlite": "^3.35.0",
+    "@payloadcms/email-nodemailer": "^3.35.0",
+    "@payloadcms/next": "^3.35.0",
+    "@payloadcms/richtext-lexical": "^3.35.0",
+    "@payloadcms/translations": "^3.35.0",
+    "@payloadcms/ui": "^3.35.0",
+    "graphql": "^16.8.1",
+    "next": "^15.3.0",
+    "payload": "^3.35.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sharp": "^0.34.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

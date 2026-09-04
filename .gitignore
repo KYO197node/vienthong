@@ -1,0 +1,22 @@
+# Dependencies & build
+node_modules/
+.next/
+standalone/
+*.tsbuildinfo
+next-env.d.ts
+
+# Env & secrets
+.env
+.env.local
+
+# Data local (khong commit)
+app/vtngason.db*
+app/media/
+
+# Logs & temp
+*.log
+*.sql
+*.sql.gz
+backups/
+.DS_Store
+Thumbs.db

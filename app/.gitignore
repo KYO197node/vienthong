@@ -1,0 +1,8 @@
+node_modules/
+.next/
+standalone/
+vtngason.db*
+media/
+.env
+*.tsbuildinfo
+next-env.d.ts

@@ -1,0 +1,273 @@
+// Bang dieu khien admin. Dung bien mau cua Payload (--theme-*) de tu dong
+// khop ca light mode va dark mode thay vi hardcode mau.
+.vt-dash {
+  padding: 0 0 60px;
+
+  h2 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 32px 0 12px;
+    color: var(--theme-elevation-800);
+  }
+
+  &__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--theme-elevation-100);
+
+    h1 {
+      margin: 0 0 4px;
+      font-size: 26px;
+      font-weight: 800;
+    }
+
+    p {
+      margin: 0;
+      color: var(--theme-elevation-500);
+      font-size: 14px;
+    }
+  }
+
+  &__view-site {
+    flex: 0 0 auto;
+    padding: 9px 18px;
+    border-radius: 20px;
+    border: 1.5px solid var(--theme-elevation-200);
+    font-weight: 600;
+    font-size: 13.5px;
+    text-decoration: none;
+    color: var(--theme-elevation-800);
+
+    &:hover {
+      border-color: var(--theme-elevation-400);
+      background: var(--theme-elevation-50);
+    }
+  }
+
+  // ===== Canh bao / viec can lam =====
+  &__alerts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  &__alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    background: var(--theme-elevation-50);
+    border-left: 4px solid var(--theme-elevation-300);
+
+    a {
+      margin-left: auto;
+      flex: 0 0 auto;
+      font-weight: 700;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    &--error {
+      border-left-color: #e53935;
+      background: color-mix(in srgb, #e53935 8%, var(--theme-elevation-50));
+    }
+    &--warn {
+      border-left-color: #f59e0b;
+      background: color-mix(in srgb, #f59e0b 8%, var(--theme-elevation-50));
+    }
+    &--info {
+      border-left-color: #1565c0;
+    }
+  }
+
+  &__alert-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex: 0 0 auto;
+    background: currentColor;
+    opacity: .5;
+  }
+
+  &__alert-text { min-width: 0; }
+
+  // ===== The so lieu =====
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+
+    &--sm {
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 18px 20px;
+    border-radius: 10px;
+    background: var(--theme-elevation-50);
+    border: 1px solid var(--theme-elevation-100);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .15s, transform .15s;
+
+    &:hover {
+      border-color: var(--theme-elevation-300);
+      transform: translateY(-2px);
+    }
+
+    &--accent {
+      background: color-mix(in srgb, #e53935 10%, var(--theme-elevation-50));
+      border-color: color-mix(in srgb, #e53935 28%, transparent);
+
+      .vt-dash__stat-num { color: #e53935; }
+    }
+  }
+
+  &__stat-num {
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  &__stat-label {
+    font-size: 12.5px;
+    color: var(--theme-elevation-500);
+    font-weight: 600;
+  }
+
+  // ===== Pipeline trang thai =====
+  &__pipeline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  &__pill {
+    padding: 7px 14px;
+    border-radius: 18px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    background: var(--theme-elevation-50);
+    border: 1px solid var(--theme-elevation-150);
+    color: var(--theme-elevation-700);
+
+    strong { margin-left: 4px; }
+    &:hover { border-color: var(--theme-elevation-400); }
+  }
+
+  // ===== Bang =====
+  &__table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--theme-elevation-100);
+    border-radius: 10px;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--theme-elevation-100);
+      white-space: nowrap;
+    }
+
+    th {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      color: var(--theme-elevation-500);
+      background: var(--theme-elevation-50);
+    }
+
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: var(--theme-elevation-50); }
+
+    td small {
+      display: block;
+      color: var(--theme-elevation-450);
+      font-size: 12px;
+      white-space: normal;
+      max-width: 260px;
+    }
+  }
+
+  &__badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11.5px;
+    font-weight: 700;
+    background: var(--theme-elevation-100);
+    color: var(--theme-elevation-700);
+
+    &--new { background: color-mix(in srgb, #e53935 16%, transparent); color: #b3261e; }
+    &--contacted { background: color-mix(in srgb, #1565c0 16%, transparent); color: #0d47a1; }
+    &--surveying { background: color-mix(in srgb, #f59e0b 20%, transparent); color: #92600a; }
+    &--done { background: color-mix(in srgb, #1b8f3a 16%, transparent); color: #146c2c; }
+    &--cancelled { text-decoration: line-through; opacity: .7; }
+  }
+
+  &__empty {
+    padding: 22px;
+    border: 1.5px dashed var(--theme-elevation-150);
+    border-radius: 10px;
+    color: var(--theme-elevation-500);
+    font-size: 14px;
+    margin: 0;
+  }
+
+  &__issues {
+    margin: 12px 0 0;
+    padding-left: 20px;
+    font-size: 13.5px;
+    color: var(--theme-elevation-600);
+
+    li { margin-bottom: 4px; }
+  }
+
+  // ===== Loi vao nhanh =====
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    a {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      background: var(--theme-elevation-50);
+      border: 1px solid var(--theme-elevation-150);
+      color: var(--theme-elevation-800);
+
+      &:hover {
+        background: var(--theme-elevation-100);
+        border-color: var(--theme-elevation-300);
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .vt-dash {
+    &__stat { padding: 14px 16px; }
+    &__stat-num { font-size: 24px; }
+  }
+}

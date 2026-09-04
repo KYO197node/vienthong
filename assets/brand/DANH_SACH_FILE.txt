@@ -1,0 +1,7 @@
+Đặt logo và tài nguyên thương hiệu vào thư mục này:
+
+- logo.png          — logo chính (khuyến nghị PNG nền trong suốt, tối thiểu 512px)
+- logo-white.png    — bản trắng để dùng trên nền đậm (tùy chọn)
+- favicon.png       — 512x512, cắt phần biểu tượng wifi từ logo
+- hero-banner.jpg   — banner trang chủ (khuyến nghị 1920x700)
+- og-image.jpg      — 1200x630, dùng khi chia sẻ link (Zalo/Facebook)

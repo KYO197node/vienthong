@@ -1,0 +1,40 @@
+import type { CollectionConfig } from 'payload'
+
+export const Products: CollectionConfig = {
+  slug: 'products',
+  labels: { singular: 'Sản phẩm', plural: 'Sản phẩm / Dịch vụ' },
+  admin: { useAsTitle: 'title', defaultColumns: ['title', 'category', 'price', 'inStock', 'featured'] },
+  access: { read: () => true },
+  fields: [
+    { name: 'title', type: 'text', required: true, label: 'Tên sản phẩm / gói dịch vụ' },
+    { name: 'slug', type: 'text', required: true, unique: true, label: 'Slug', admin: { position: 'sidebar' } },
+    { name: 'category', type: 'relationship', relationTo: 'categories', required: true, label: 'Danh mục' },
+    { name: 'price', type: 'number', required: true, min: 0, label: 'Giá (VNĐ)' },
+    { name: 'oldPrice', type: 'number', min: 0, label: 'Giá gốc (gạch ngang, nếu có)' },
+    {
+      name: 'billingCycle',
+      type: 'select',
+      label: 'Chu kỳ tính cước',
+      defaultValue: 'monthly',
+      admin: { position: 'sidebar' },
+      options: [
+        { label: '24 giờ', value: 'daily' },
+        { label: '7 ngày', value: 'weekly' },
+        { label: '30 ngày', value: 'monthly' },
+        { label: '1 tháng', value: '1m' },
+        { label: '3 tháng', value: '3m' },
+        { label: '6 tháng', value: '6m' },
+        { label: '12 tháng', value: '12m' },
+        { label: 'Khác', value: 'other' },
+      ],
+    },
+    { name: 'unit', type: 'text', defaultValue: '/tháng', label: 'Đơn vị giá (vd: /tháng)' },
+    { name: 'shortDescription', type: 'textarea', required: true, label: 'Mô tả ngắn' },
+    { name: 'description', type: 'richText', label: 'Mô tả chi tiết' },
+    { name: 'image', type: 'upload', relationTo: 'media', label: 'Ảnh chính' },
+    { name: 'gallery', type: 'upload', relationTo: 'media', hasMany: true, label: 'Bộ sưu tập ảnh' },
+    { name: 'inStock', type: 'checkbox', defaultValue: true, label: 'Còn nhận đăng ký' },
+    { name: 'featured', type: 'checkbox', defaultValue: false, label: 'Nổi bật (hiện trang chủ)' },
+    { name: 'order', type: 'number', defaultValue: 0, label: 'Thứ tự', admin: { position: 'sidebar' } },
+  ],
+}
