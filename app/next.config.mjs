@@ -14,6 +14,19 @@ const nextConfig = {
       { source: '/mcp/', destination: '/api/mcp/' },
     ]
   },
+  async redirects() {
+    return [
+      { source: '/san-pham/goi-mi-td49-3m', destination: '/shop', permanent: true },
+      { source: '/san-pham/goi-mi-d30g', destination: '/shop', permanent: true },
+      { source: '/san-pham/combo-thoai-data-max100', destination: '/shop', permanent: true },
+      { source: '/san-pham/goi-internet-ftth-30mbps', destination: '/danh-muc/internet-truyen-hinh', permanent: true },
+      { source: '/san-pham/goi-internet-ftth-50mbps', destination: '/danh-muc/internet-truyen-hinh', permanent: true },
+      { source: '/danh-muc/internet-cap-quang', destination: '/danh-muc/internet-truyen-hinh', permanent: true },
+      { source: '/danh-muc/sim-goi-cuoc', destination: '/danh-muc/di-dong', permanent: true },
+      { source: '/danh-muc/camera-an-ninh', destination: '/danh-muc/internet-camera', permanent: true },
+      { source: '/danh-muc/tv-box', destination: '/danh-muc/truyen-hinh-mytv', permanent: true },
+    ]
+  },
   async headers() {
     return [
       {

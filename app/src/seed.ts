@@ -131,7 +131,7 @@ const PRODUCTS: Array<[string, string, string, number, string, string]> = [
   ['Home Cam 1 — Internet 300M + Camera Cloud', 'home-cam-1-internet-300m-camera-cloud', 'camera-an-ninh', 250000, 'camera', 'Fiber 300Mbps + 01 Camera Indoor + Cloud 7 ngày. Giá 250.000đ/tháng, gói 12/13 tháng 3.000K.'],
   ['Home Cam 2 — Internet 500M + Camera + Mesh', 'home-cam-2-internet-500m-camera-mesh', 'camera-an-ninh', 310000, 'camera', 'Fiber 500Mbps + Mesh 6 + Camera + Cloud. Giá 310.000đ/tháng, gói 12/13 tháng 3.720K.'],
   ['Home Sành 2 — Combo Internet + Di động', 'home-sanh-2-combo-internet-di-dong', 'sim-goi-cuoc', 249000, 'sim', 'Fiber 300Mbps + data di động chủ nhóm 3GB/ngày + 1.500 phút nội mạng. Tối đa 6 thành viên. Giá 249.000đ/tháng.'],
-  ['Home Sành 4 — Combo 500Mbps', 'home-sanh-4-combo-500mbps', 'sim-goi-cuoc', 359000, 'sim', 'Fiber 500Mbps + 01 Mesh + data 3GB/ngày + 1.500 phút nội mạng cho chủ nhóm. Giá 359.000đ/tháng.'],
+  ['Home Sành 4 — Combo 500Mbps', 'home-sanh-4-combo-500mbps', 'sim-goi-cuoc', 329000, 'sim', 'Fiber 500Mbps + 01 Mesh + data 3GB/ngày + 1.500 phút nội mạng cho chủ nhóm. Giá 329.000đ/tháng.'],
   ['Gói VD150 — 150K: Thoại + 2GB/ngày', 'goi-vd150-thoai-data', 'sim-goi-cuoc', 150000, 'sim', '80 phút thoại nội mạng + 2GB/ngày. Chu kỳ 1 tháng 150K, 3 tháng 450K, 6 tháng 900K, 12 tháng 1.800K.'],
   ['Gói D169G — 169K: 2000p gọi + 7GB/ngày', 'goi-d169g-2000p-goi-7gb-ngay', 'sim-goi-cuoc', 169000, 'sim', '2.000 phút gọi nội mạng + 150 phút ngoại mạng + 7GB/ngày. Giá 169.000đ/chu kỳ.'],
   ['Gói YOLO90 — 90K: 1,5GB/ngày', 'goi-yolo90-15gb-ngay', 'sim-goi-cuoc', 90000, 'sim', 'Data 1,5GB/ngày, giá chỉ 90.000đ/chu kỳ. Gói 3 tháng 270K, 6 tháng 540K, 12 tháng 1.080K.'],
