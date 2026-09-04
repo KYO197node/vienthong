@@ -27,18 +27,18 @@ export const Settings: GlobalConfig = {
       name: 'partnerLogo',
       type: 'upload',
       relationTo: 'media',
-      label: 'Logo đối tác (VNPT/VinaPhone)',
+      label: 'Logo VNPT/VinaPhone',
       admin: {
         description:
-          'Upload logo VNPT chính thức (PNG nền trong suốt, tối thiểu 400px rộng). Dùng làm hình nền mờ ở banner trang chủ và badge ở footer. Để trống thì không hiện.',
+          'Upload logo VNPT chính thức (PNG nền trong suốt, tối thiểu 400px rộng). Hiển thị ở header, footer và làm watermark banner. Để trống thì không hiện.',
       },
     },
     {
       name: 'partnerLabel',
       type: 'text',
-      defaultValue: 'Đối tác uỷ quyền VNPT',
-      label: 'Chú thích cạnh logo đối tác',
-      admin: { description: 'Chỉ hiện khi đã upload logo đối tác.' },
+      defaultValue: '',
+      label: 'Chú thích cạnh logo VNPT (tuỳ chọn)',
+      admin: { description: 'Để trống nếu bạn là nhân viên VNPT chính thức — logo VNPT vẫn hiển thị mà không kèm chữ.' },
     },
     {
       name: 'partnerWatermark',

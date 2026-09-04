@@ -31,7 +31,6 @@ export default async function Header() {
 
   const partner = settings?.partnerLogo && typeof settings.partnerLogo === 'object' ? settings.partnerLogo : null
   const partnerSrc = mediaSrc(partner?.url)
-  const partnerLabel = settings?.partnerLabel || 'Đối tác uỷ quyền VNPT'
 
   return (
     <header className="vt-header">
@@ -84,15 +83,14 @@ export default async function Header() {
           )}
 
           {partnerSrc && (
-            <div className="vt-header-partner" title={partnerLabel}>
+            <div className="vt-header-partner">
               <Image
                 src={partnerSrc}
-                alt={partner?.alt || partnerLabel}
+                alt={partner?.alt || 'VNPT'}
                 width={partner?.width || 400}
                 height={partner?.height || 160}
                 priority
               />
-              <span className="vt-header-partner__label">{partnerLabel}</span>
             </div>
           )}
         </div>

@@ -83,7 +83,7 @@ export default async function HomePage() {
           src: partnerSrc,
           width: partner?.width || 400,
           height: partner?.height || 160,
-          alt: partner?.alt || settings?.partnerLabel || 'Logo đối tác',
+          alt: partner?.alt || 'VNPT',
         }
       : null
 

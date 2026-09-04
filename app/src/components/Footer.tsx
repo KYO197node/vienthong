@@ -20,7 +20,6 @@ export default async function Footer() {
 
   const partner = settings?.partnerLogo && typeof settings.partnerLogo === 'object' ? settings.partnerLogo : null
   const partnerSrc = mediaSrc(partner?.url)
-  const partnerLabel = settings?.partnerLabel || 'Đối tác uỷ quyền VNPT'
 
   return (
     <footer className="vt-footer">
@@ -41,17 +40,15 @@ export default async function Footer() {
               </p>
             )}
 
-            {/* Badge doi tac: logo VNPT dang thay duoc, khong phai watermark mo. */}
             {partnerSrc && (
               <p className="vt-partner">
                 <Image
                   src={partnerSrc}
-                  alt={partner?.alt || partnerLabel}
+                  alt={partner?.alt || 'VNPT'}
                   width={partner?.width || 400}
                   height={partner?.height || 160}
                   sizes="150px"
                 />
-                <span>{partnerLabel}</span>
               </p>
             )}
           </div>

@@ -567,11 +567,11 @@ export interface Setting {
   email?: string | null;
   logo?: (number | null) | Media;
   /**
-   * Upload logo VNPT chính thức (PNG nền trong suốt, tối thiểu 400px rộng). Dùng làm hình nền mờ ở banner trang chủ và badge ở footer. Để trống thì không hiện.
+   * Upload logo VNPT chính thức (PNG nền trong suốt, tối thiểu 400px rộng). Hiển thị ở header, footer và làm watermark banner. Để trống thì không hiện.
    */
   partnerLogo?: (number | null) | Media;
   /**
-   * Chỉ hiện khi đã upload logo đối tác.
+   * Để trống nếu bạn là nhân viên VNPT chính thức — logo VNPT vẫn hiển thị mà không kèm chữ.
    */
   partnerLabel?: string | null;
   partnerWatermark?: boolean | null;
