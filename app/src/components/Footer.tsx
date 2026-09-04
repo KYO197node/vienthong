@@ -9,6 +9,7 @@ const POLICIES = [
   { href: '/chinh-sach/chinh-sach-thanh-toan', label: 'Chính sách thanh toán' },
   { href: '/chinh-sach/chinh-sach-bao-hanh-doi-tra', label: 'Chính sách bảo hành và đổi trả' },
   { href: '/chinh-sach/quy-trinh-lap-dat-va-khieu-nai', label: 'Quy trình lắp đặt và giải quyết khiếu nại' },
+  { href: '/chinh-sach/tuyen-bo-mien-tru-trach-nhiem', label: 'Tuyên bố miễn trừ trách nhiệm' },
 ]
 
 export default async function Footer() {

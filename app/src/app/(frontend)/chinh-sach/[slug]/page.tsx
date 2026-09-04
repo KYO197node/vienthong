@@ -14,6 +14,7 @@ const POLICY_SLUGS = [
   'chinh-sach-thanh-toan',
   'chinh-sach-bao-hanh-doi-tra',
   'quy-trinh-lap-dat-va-khieu-nai',
+  'tuyen-bo-mien-tru-trach-nhiem',
 ]
 
 type Props = { params: Promise<{ slug: string }> }

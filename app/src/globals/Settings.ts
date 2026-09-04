@@ -21,7 +21,7 @@ export const Settings: GlobalConfig = {
     { name: 'zalo', type: 'text', defaultValue: 'https://zalo.me/0943397197', label: 'Link Zalo' },
     { name: 'messenger', type: 'text', defaultValue: 'https://web.facebook.com/vienthongngason', label: 'Link Messenger' },
     { name: 'address', type: 'text', defaultValue: 'Nga Sơn, Thanh Hóa', label: 'Địa chỉ' },
-    { name: 'email', type: 'email', defaultValue: 'vienthongngason@gmail.com', label: 'Email' },
+    { name: 'email', type: 'email', defaultValue: '', label: 'Email (để trống sẽ không hiện)' },
     { name: 'logo', type: 'upload', relationTo: 'media', label: 'Logo' },
     {
       name: 'partnerLogo',

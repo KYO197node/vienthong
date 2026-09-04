@@ -171,6 +171,15 @@ export default async function seed() {
   if (!settings?.id) {
     await payload.updateGlobal({ slug: 'settings', data: {} })
   }
+  // Loai bo email cong khai theo yeu cau — de trong se khong hien o footer/gioi-thieu
+  try {
+    const cur = await payload.findGlobal({ slug: 'settings' })
+    if (cur?.email === 'vienthongngason@gmail.com') {
+      await payload.updateGlobal({ slug: 'settings', data: { email: '' } })
+      console.log('  ~ da xoa email cong khai theo yeu cau')
+    }
+  } catch {}
+
 
   console.log('== Danh muc ==')
   const catIds: Record<string, number> = {}
@@ -249,10 +258,10 @@ export default async function seed() {
     ['Đăng ký lắp đặt', 'dang-ky', '03-dang-ky-lap-dat.md'],
     ['Hỗ trợ', 'ho-tro', '04-ho-tro-lien-he.md'],
     ...POLICY_FILES.map((p) => [p[0], p[1], p[2]] as [string, string, string]),
+    ['Tuyên bố miễn trừ trách nhiệm', 'tuyen-bo-mien-tru-trach-nhiem', '11-tuyen-bo-mien-tru-trach-nhiem.md'],
   ]
   for (const [title, slug, file] of pages) {
     const existing = await payload.find({ collection: 'pages', where: { slug: { equals: slug } }, limit: 1 })
-    if (existing.docs[0]) continue
     let html = ''
     const filePath = path.join(contentDir, file ?? '')
     if (file && fs.existsSync(filePath)) {
@@ -260,12 +269,14 @@ export default async function seed() {
     } else {
       html = `<p>Nội dung trang <strong>${title}</strong> đang được cập nhật.</p>`
     }
-    await payload.create({
-      collection: 'pages',
-      data: { title, slug, excerpt: title, content: richTextFromHtml(html) },
-      overrideAccess: true,
-    })
-    console.log(`  + ${title} (${slug})`)
+    const data = { title, slug, excerpt: title, content: richTextFromHtml(html) }
+    if (existing.docs[0]) {
+      await payload.update({ collection: 'pages', id: existing.docs[0].id, data, overrideAccess: true })
+      console.log(`  ~ cap nhat ${title} (${slug})`)
+    } else {
+      await payload.create({ collection: 'pages', data, overrideAccess: true })
+      console.log(`  + ${title} (${slug})`)
+    }
   }
 
   console.log('== SEED HOAN TAT ==')

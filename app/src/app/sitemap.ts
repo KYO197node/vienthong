@@ -22,6 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       'chinh-sach-thanh-toan',
       'chinh-sach-bao-hanh-doi-tra',
       'quy-trinh-lap-dat-va-khieu-nai',
+      'tuyen-bo-mien-tru-trach-nhiem',
     ].map((slug) => ({ url: absoluteUrl(`/chinh-sach/${slug}`), changeFrequency: 'yearly' as const, priority: 0.3 })),
   ]
 
