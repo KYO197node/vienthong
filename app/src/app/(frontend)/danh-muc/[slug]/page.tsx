@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import JsonLd from '@/components/JsonLd'
-import PackGrid from '@/components/PackGrid'
+import DigishopCard from '@/components/DigishopCard'
 import { getPayloadClient } from '@/lib/payload'
 import { getSettings, getCategoryIdsWithChildren, getCategories, parentIdOf, type CategoryLike } from '@/lib/queries'
 import { absoluteUrl, formatPrice } from '@/lib/utils'
@@ -141,7 +141,20 @@ export default async function CategoryPage({ params, searchParams }: Props) {
                       Hiển thị {groupCount} gói (gộp từ {products.length} biến thể) — các gói cùng tên đã được gộp
                     </p>
                   )}
-                  <PackGrid packs={groups.map(g => ({ ...g.products[0], title: g.base, price: g.minPrice, _variants: g.products })) as any} hotline={hotline} />
+                  <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap:'16px'}}>
+                    {groups.map((g) => {
+                      const main = g.products[0]
+                      const isInternet = (main.category as any)?.slug?.includes('internet') || g.base.includes('HOME')
+                      return (
+                        <DigishopCard
+                          key={main.id}
+                          product={{ ...main, title: g.base, price: g.minPrice } as any}
+                          hotline={hotline}
+                          variant={isInternet ? 'box-internet' : 'pack-item'}
+                        />
+                      )
+                    })}
+                  </div>
                 </>
               )
             })()}

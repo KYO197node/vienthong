@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import ProductCard from '@/components/ProductCard'
+import DigishopCard from '@/components/DigishopCard'
 import JsonLd from '@/components/JsonLd'
 import { getPayloadClient } from '@/lib/payload'
 import { getCategoryTree, getSettings } from '@/lib/queries'
@@ -93,21 +93,20 @@ export default async function ShopPage({ searchParams }: Props) {
             {(() => {
               const groups = groupByBase(products as any)
               return (
-                <ul className="pack-grid products-packgrid">
-                  {groups.map((g) => {
+                <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap:'16px'}}>
+                  {groups.slice(0, 24).map((g) => {
                     const main = g.products[0]
-                    const priceLabel = g.hasVariants ? `Từ ${formatPrice(g.minPrice)}` : formatPrice(main.price, main.unit)
-                    const variantCount = g.products.length
+                    const isInternet = (main.category as any)?.slug?.includes('internet') || g.base.includes('HOME')
                     return (
-                      <ProductCard
+                      <DigishopCard
                         key={main.id}
-                        product={{ ...main, price: g.minPrice, title: g.base } as any}
+                        product={{ ...main, title: g.base, price: g.minPrice } as any}
                         hotline={hotline}
-                        variantInfo={g.hasVariants ? { count: variantCount, maxPrice: g.maxPrice } : undefined}
+                        variant={isInternet ? 'box-internet' : 'pack-item'}
                       />
                     )
                   })}
-                </ul>
+                </div>
               )
             })()}
 

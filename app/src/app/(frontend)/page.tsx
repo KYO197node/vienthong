@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import HeroSlider from '@/components/HeroSlider'
-import ProductCard from '@/components/ProductCard'
+import DigishopCard from '@/components/DigishopCard'
 import JsonLd from '@/components/JsonLd'
 import { getSettings, getCategoryTree, getProductsByCategory, getLatestPosts } from '@/lib/queries'
 import { absoluteUrl, formatPrice, mediaSrc } from '@/lib/utils'
@@ -188,19 +188,20 @@ export default async function HomePage() {
                 Xem tất cả →
               </Link>
             </div>
-            <ul className="pack-grid products-packgrid">
+            <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap:'16px'}}>
               {groups.slice(0, 8).map((g) => {
                 const main = g.products[0]
+                const isInternet = (main.category as any)?.slug?.includes('internet') || g.base.includes('HOME')
                 return (
-                  <ProductCard
+                  <DigishopCard
                     key={main.id}
                     product={{ ...main, title: g.base, price: g.minPrice } as any}
                     hotline={hotline}
-                    variantInfo={g.hasVariants ? { count: g.products.length, maxPrice: g.maxPrice } : undefined}
+                    variant={isInternet ? 'box-internet' : 'pack-item'}
                   />
                 )
               })}
-            </ul>
+            </div>
           </section>
         )
       })}
