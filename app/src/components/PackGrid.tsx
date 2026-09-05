@@ -127,9 +127,14 @@ export default function PackGrid({ packs, hotline }: { packs: Pack[]; hotline: s
                   {cycle ? <span className="pack-card__cycle-badge">{cycle}</span> : null}
                 </div>
 
-                <a className="pack-card__btn" href={`tel:${tel}`}>
-                  {onRequest ? 'Gọi tư vấn' : 'Đăng ký'}
-                </a>
+                <div className="pack-card__actions">
+                  <Link className="pack-card__btn pack-card__btn--ghost" href={`/san-pham/${p.slug}`}>
+                    CHI TIẾT
+                  </Link>
+                  <a className="pack-card__btn" href={`tel:${tel}`}>
+                    {onRequest ? 'Gọi tư vấn' : 'ĐĂNG KÝ NGAY'}
+                  </a>
+                </div>
               </li>
             )
           })}

@@ -76,10 +76,13 @@ export default async function Header() {
             Hotline chi xuat hien MOT lan trong header (truoc day lap ca o topbar). */}
         <div className="vt-header-right">
           {hotline && (
-            <a className="vt-header-hotline" href={`tel:${tel}`}>
-              <span className="vt-header-hotline__label">Hotline tư vấn miễn phí</span>
-              <strong>{hotline}</strong>
-            </a>
+            <div className="vt-header-hotline-wrap">
+              <a className="vt-header-hotline" href={`tel:${tel}`}>
+                <span className="vt-header-hotline__label">Hotline tư vấn miễn phí</span>
+                <strong>{hotline}</strong>
+              </a>
+              <span className="vt-header-hotline__sub">18001091 (Di động) | 18001166 (Internet/MyTV)</span>
+            </div>
           )}
 
           {partnerSrc && (

@@ -73,15 +73,20 @@ export default function ProductCard({ product, hotline = '' }: { product: Produc
         {cycle ? <span className="pack-card__cycle-badge">{cycle}</span> : null}
       </div>
 
-      {tel ? (
-        <a className="pack-card__btn" href={`tel:${tel}`}>
-          {onRequest ? 'Gọi tư vấn' : 'Đăng ký'}
-        </a>
-      ) : (
-        <Link className="pack-card__btn" href={`/dang-ky?s=${product.slug}`}>
-          Đăng ký
+      <div className="pack-card__actions">
+        <Link className="pack-card__btn pack-card__btn--ghost" href={`/san-pham/${product.slug}`}>
+          CHI TIẾT
         </Link>
-      )}
+        {tel ? (
+          <a className="pack-card__btn" href={`tel:${tel}`}>
+            {onRequest ? 'Gọi tư vấn' : 'ĐĂNG KÝ NGAY'}
+          </a>
+        ) : (
+          <Link className="pack-card__btn" href={`/dang-ky?s=${product.slug}`}>
+            ĐĂNG KÝ NGAY
+          </Link>
+        )}
+      </div>
     </li>
   )
 }

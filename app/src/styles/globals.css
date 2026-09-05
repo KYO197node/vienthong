@@ -74,6 +74,8 @@ select:focus-visible, textarea:focus-visible {
 .vt-header-hotline:hover { background: #fff1f0; border-color: #ffcac4; transform: translateY(-1px); box-shadow: 0 2px 8px rgba(229,57,53,0.12); }
 .vt-header-hotline strong { display: block; font-size: 19px; font-weight: 800; color: var(--vt-price); letter-spacing: .2px; }
 .vt-header-hotline__label { display: block; font-size: 10px; color: var(--vt-muted); text-transform: uppercase; letter-spacing: .5px; font-weight: 600; }
+.vt-header-hotline-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.vt-header-hotline__sub { display: block; font-size: 11px; color: #7d7d7d; font-weight: 500; letter-spacing: .1px; }
 
 /* Logo doi tac: tach bang vach doc, chu thich nho de khong tranh voi hotline. */
 .vt-header-partner {
@@ -340,16 +342,20 @@ select:focus-visible, textarea:focus-visible {
   background: var(--vt-primary-light); color: var(--vt-primary-dark);
 }
 
-/* Duy nhat 1 nut, full rong — pill gradient hover */
+/* 2 nut: CHI TIET ghost + DANG KY primary — pill gradient hover */
+.pack-card__actions { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 8px 8px 8px; margin-top: auto; }
 .pack-card__btn {
-  display: block; text-align: center; padding: 9px; margin: 8px 8px 8px; margin-top: auto;
+  display: inline-flex; align-items: center; justify-content: center; text-align: center; padding: 9px 6px;
   border-radius: 999px; border: 1.5px solid var(--vt-primary); color: var(--vt-primary);
-  font-weight: 800; font-size: 12.5px; transition: all .18s cubic-bezier(.4,0,.2,1); position: relative; overflow: hidden;
+  font-weight: 800; font-size: 11.5px; transition: all .18s cubic-bezier(.4,0,.2,1); position: relative; overflow: hidden; letter-spacing: .2px;
 }
 .pack-card__btn::before { content:""; position:absolute; inset:0; background: var(--vt-primary); transform: scaleX(0); transform-origin: left; transition: transform .18s cubic-bezier(.4,0,.2,1); border-radius: 999px; }
 .pack-card__btn:hover { color: #fff; border-color: var(--vt-primary); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(21,101,192,0.22); }
 .pack-card__btn:hover::before { transform: scaleX(1); }
 .pack-card__btn span, .pack-card__btn { position: relative; z-index: 1; }
+.pack-card__btn--ghost { background: #fff; color: #334155; border-color: #e2e8f0; }
+.pack-card__btn--ghost::before { background: #f1f5f9; }
+.pack-card__btn--ghost:hover { color: var(--vt-primary-dark); border-color: #cbd5e1; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
 /* ===== Pack filter / trang thai ===== */
 .pack-filter {
