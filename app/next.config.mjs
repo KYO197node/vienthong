@@ -25,6 +25,7 @@ const nextConfig = {
       { source: '/danh-muc/sim-goi-cuoc', destination: '/danh-muc/di-dong', permanent: true },
       { source: '/danh-muc/camera-an-ninh', destination: '/danh-muc/internet-camera', permanent: true },
       { source: '/danh-muc/tv-box', destination: '/danh-muc/truyen-hinh-mytv', permanent: true },
+      { source: '/danh-muc/dich-vu-cntt', destination: '/danh-muc/dich-vu-so', permanent: true },
     ]
   },
   async headers() {
