@@ -119,12 +119,23 @@ export default function PackGrid({ packs, hotline }: { packs: Pack[]; hotline: s
 
                 <Link className="pack-card__title" href={`/san-pham/${p.slug}`}>
                   <span>{p.title}</span>
+                  {(p as any)._variants && <small style={{display:'block', fontSize:'11px', color:'var(--vt-muted)', fontWeight:500}}>{(p as any)._variants.length} biến thể</small>}
                 </Link>
 
                 <div className={'pack-card__price' + (onRequest ? ' pack-card__price--request' : '')}>
-                  {formatPrice(p.price)}
-                  {!onRequest && p.unit ? <small className="pack-card__unit">{p.unit}</small> : null}
-                  {cycle ? <span className="pack-card__cycle-badge">{cycle}</span> : null}
+                  {(p as any)._variants ? (
+                    <>
+                      {formatPrice(p.price)}
+                      <small className="pack-card__unit"> - {formatPrice(Math.max(...(p as any)._variants.map((v:any)=>v.price)))}</small>
+                      <span className="pack-card__cycle-badge">{(p as any)._variants.length} lựa chọn</span>
+                    </>
+                  ) : (
+                    <>
+                      {formatPrice(p.price)}
+                      {!onRequest && p.unit ? <small className="pack-card__unit">{p.unit}</small> : null}
+                      {cycle ? <span className="pack-card__cycle-badge">{cycle}</span> : null}
+                    </>
+                  )}
                 </div>
 
                 <div className="pack-card__actions">

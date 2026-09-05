@@ -5,7 +5,8 @@ import JsonLd from '@/components/JsonLd'
 import PackGrid from '@/components/PackGrid'
 import { getPayloadClient } from '@/lib/payload'
 import { getSettings, getCategoryIdsWithChildren, getCategories, parentIdOf, type CategoryLike } from '@/lib/queries'
-import { absoluteUrl } from '@/lib/utils'
+import { absoluteUrl, formatPrice } from '@/lib/utils'
+import { groupByBase } from '@/lib/variants'
 
 // Render dong: `next build` dung SQLite con production dung Postgres,
 // nen khong the prerender HTML luc build. Du lieu duoc cache runtime
@@ -129,7 +130,21 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
         {products.length > 0 ? (
           <>
-            <PackGrid packs={products} hotline={hotline} />
+            {(() => {
+              const groups = groupByBase(products as any)
+              const groupCount = groups.length
+              const variantCount = products.length - groupCount
+              return (
+                <>
+                  {variantCount > 0 && (
+                    <p className="pack-count" style={{marginBottom: '12px', color: 'var(--vt-muted)', fontSize: '13px'}}>
+                      Hiển thị {groupCount} gói (gộp từ {products.length} biến thể) — các gói cùng tên đã được gộp
+                    </p>
+                  )}
+                  <PackGrid packs={groups.map(g => ({ ...g.products[0], title: g.base, price: g.minPrice, _variants: g.products })) as any} hotline={hotline} />
+                </>
+              )
+            })()}
             {totalPages > 1 && (
               <nav className="vt-pagination" aria-label="Phân trang">
                 {hasPrevPage && (

@@ -4,7 +4,8 @@ import ProductCard from '@/components/ProductCard'
 import JsonLd from '@/components/JsonLd'
 import { getPayloadClient } from '@/lib/payload'
 import { getCategoryTree, getSettings } from '@/lib/queries'
-import { absoluteUrl } from '@/lib/utils'
+import { absoluteUrl, formatPrice } from '@/lib/utils'
+import { groupByBase } from '@/lib/variants'
 
 // Render dong: `next build` dung SQLite con production dung Postgres,
 // nen khong the prerender HTML luc build. Du lieu duoc cache runtime
@@ -89,11 +90,26 @@ export default async function ShopPage({ searchParams }: Props) {
 
         {products.length > 0 ? (
           <>
-            <ul className="pack-grid products-packgrid">
-              {products.map((p) => (
-                <ProductCard key={p.id} product={p} hotline={hotline} />
-              ))}
-            </ul>
+            {(() => {
+              const groups = groupByBase(products as any)
+              return (
+                <ul className="pack-grid products-packgrid">
+                  {groups.map((g) => {
+                    const main = g.products[0]
+                    const priceLabel = g.hasVariants ? `Từ ${formatPrice(g.minPrice)}` : formatPrice(main.price, main.unit)
+                    const variantCount = g.products.length
+                    return (
+                      <ProductCard
+                        key={main.id}
+                        product={{ ...main, price: g.minPrice, title: g.base } as any}
+                        hotline={hotline}
+                        variantInfo={g.hasVariants ? { count: variantCount, maxPrice: g.maxPrice } : undefined}
+                      />
+                    )
+                  })}
+                </ul>
+              )
+            })()}
 
             {totalPages > 1 && (
               <nav className="vt-pagination" aria-label="Phân trang">

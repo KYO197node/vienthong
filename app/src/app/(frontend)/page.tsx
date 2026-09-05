@@ -5,6 +5,7 @@ import ProductCard from '@/components/ProductCard'
 import JsonLd from '@/components/JsonLd'
 import { getSettings, getCategoryTree, getProductsByCategory, getLatestPosts } from '@/lib/queries'
 import { absoluteUrl, formatPrice, mediaSrc } from '@/lib/utils'
+import { groupByBase } from '@/lib/variants'
 import Image from 'next/image'
 
 export const metadata: Metadata = {
@@ -177,21 +178,32 @@ export default async function HomePage() {
         </section>
       )}
 
-      {withProducts.map((s) => (
-        <section className="vt-section" key={s.slug} aria-labelledby={`sec-${s.slug}`}>
-          <div className="vt-section-head">
-            <h2 id={`sec-${s.slug}`}>{s.title}</h2>
-            <Link className="vt-more" href={`/danh-muc/${s.slug}`}>
-              Xem tất cả →
-            </Link>
-          </div>
-          <ul className="pack-grid products-packgrid">
-            {s.products.map((p) => (
-              <ProductCard key={p.id} product={p} hotline={hotline} />
-            ))}
-          </ul>
-        </section>
-      ))}
+      {withProducts.map((s) => {
+        const groups = groupByBase(s.products as any)
+        return (
+          <section className="vt-section" key={s.slug} aria-labelledby={`sec-${s.slug}`}>
+            <div className="vt-section-head">
+              <h2 id={`sec-${s.slug}`}>{s.title}</h2>
+              <Link className="vt-more" href={`/danh-muc/${s.slug}`}>
+                Xem tất cả →
+              </Link>
+            </div>
+            <ul className="pack-grid products-packgrid">
+              {groups.slice(0, 8).map((g) => {
+                const main = g.products[0]
+                return (
+                  <ProductCard
+                    key={main.id}
+                    product={{ ...main, title: g.base, price: g.minPrice } as any}
+                    hotline={hotline}
+                    variantInfo={g.hasVariants ? { count: g.products.length, maxPrice: g.maxPrice } : undefined}
+                  />
+                )
+              })}
+            </ul>
+          </section>
+        )
+      })}
 
       <section className="vt-section" id="hot-deal" aria-labelledby="hotdeal-heading">
         <div className="vt-hotdeal">

@@ -8,6 +8,7 @@ import JsonLd from '@/components/JsonLd'
 import { getPayloadClient } from '@/lib/payload'
 import { getSettings } from '@/lib/queries'
 import { absoluteUrl, formatPrice, isPriceOnRequest, mediaSrc } from '@/lib/utils'
+import { baseTitle, getVariantLabel } from '@/lib/variants'
 
 // Render dong: `next build` dung SQLite con production dung Postgres,
 // nen khong the prerender HTML luc build. Du lieu duoc cache runtime
@@ -47,7 +48,8 @@ export default async function ProductPage({ params }: Props) {
   const payload = await getPayloadClient()
   const catId = typeof product.category === 'object' ? product.category.id : product.category
   const cat = typeof product.category === 'object' ? product.category : null
-  const [{ docs: related }, settings] = await Promise.all([
+  const base = baseTitle(product.title)
+  const [{ docs: related }, settings, { docs: variants }] = await Promise.all([
     payload.find({
       collection: 'products',
       where: { category: { equals: catId }, slug: { not_equals: product.slug } },
@@ -55,7 +57,14 @@ export default async function ProductPage({ params }: Props) {
       depth: 1,
     }),
     getSettings().catch(() => null),
+    payload.find({
+      collection: 'products',
+      where: { title: { like: base } },
+      limit: 20,
+      depth: 1,
+    }),
   ])
+  const variantGroup = variants.filter((v: any) => baseTitle(v.title) === base).sort((a:any,b:any)=>a.price-b.price)
 
   const hotline = settings?.hotline ?? ''
   const tel = hotline.replace(/[^0-9]/g, '')
@@ -134,6 +143,37 @@ export default async function ProductPage({ params }: Props) {
               {product.oldPrice ? <del>{formatPrice(product.oldPrice)}</del> : null}
               {formatPrice(product.price, product.unit)}
             </p>
+
+            {variantGroup.length > 1 && (
+              <div className="vt-product__variants" style={{margin:'14px 0'}}>
+                <p style={{fontSize:'13px', color:'var(--vt-muted)', margin:'0 0 8px', fontWeight:600}}>Chọn biến thể ({variantGroup.length} lựa chọn):</p>
+                <div style={{display:'flex', gap:'8px', flexWrap:'wrap'}}>
+                  {variantGroup.map((v:any) => {
+                    const label = getVariantLabel(v.title, base)
+                    const isActive = v.slug === product.slug
+                    return (
+                      <Link
+                        key={v.id}
+                        href={`/san-pham/${v.slug}`}
+                        className={'vt-product__variant' + (isActive ? ' active' : '')}
+                        style={{
+                          padding:'7px 12px',
+                          borderRadius:'999px',
+                          border: isActive ? '1.5px solid var(--vt-primary)' : '1.5px solid var(--vt-border)',
+                          background: isActive ? 'var(--vt-primary-light)' : '#fff',
+                          color: isActive ? 'var(--vt-primary-dark)' : 'var(--vt-text)',
+                          fontSize:'13px',
+                          fontWeight: isActive ? 700 : 500,
+                          textDecoration:'none'
+                        }}
+                      >
+                        {label} - {formatPrice(v.price)}
+                      </Link>
+                    )
+                  })}
+                </div>
+              </div>
+            )}
 
             {product.shortDescription && <p className="vt-product__lead">{product.shortDescription}</p>}
 

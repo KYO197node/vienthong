@@ -34,7 +34,7 @@ const CYCLE_LABELS: Record<string, string> = {
   other: '',
 }
 
-export default function ProductCard({ product, hotline = '' }: { product: ProductLike; hotline?: string }) {
+export default function ProductCard({ product, hotline = '', variantInfo }: { product: ProductLike; hotline?: string; variantInfo?: { count: number; maxPrice: number } }) {
   const media = typeof product.image === 'object' && product.image !== null ? product.image : null
   const img = mediaSrc(media?.url)
   const tel = hotline.replace(/[^0-9]/g, '')
@@ -68,9 +68,19 @@ export default function ProductCard({ product, hotline = '' }: { product: Produc
       </Link>
 
       <div className={'pack-card__price' + (onRequest ? ' pack-card__price--request' : '')}>
-        {formatPrice(product.price)}
-        {!onRequest && product.unit ? <small className="pack-card__unit">{product.unit}</small> : null}
-        {cycle ? <span className="pack-card__cycle-badge">{cycle}</span> : null}
+        {variantInfo ? (
+          <>
+            {formatPrice(product.price)}
+            <small className="pack-card__unit"> - {formatPrice(variantInfo.maxPrice)}</small>
+            <span className="pack-card__cycle-badge">{variantInfo.count} lựa chọn</span>
+          </>
+        ) : (
+          <>
+            {formatPrice(product.price)}
+            {!onRequest && product.unit ? <small className="pack-card__unit">{product.unit}</small> : null}
+            {cycle ? <span className="pack-card__cycle-badge">{cycle}</span> : null}
+          </>
+        )}
       </div>
 
       <div className="pack-card__actions">
