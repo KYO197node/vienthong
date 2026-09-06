@@ -137,6 +137,16 @@ export const DIGISHOP_ORDER: Record<string, number> = {
   'truyen-hinh-mytv': 5,
 }
 
+/**
+ * 3 section chot cho DI DONG: Gói Data / Trả trước / Trả sau.
+ * slug ao on dinh de lam anchor #goi-data/#tra-truoc/#tra-sau.
+ */
+export const DI_DONG_SECTIONS = [
+  { slug: 'goi-data', name: 'Gói Data', from: ['goi-cuoc-4g', 'goi-ung-dung'] },
+  { slug: 'tra-truoc', name: 'Trả trước', from: ['goi-cuoc-thoai', 'combo-thoai-data'] },
+  { slug: 'tra-sau', name: 'Trả sau', from: ['sim-so', 'chuyen-vung-quoc-te'] },
+] as const
+
 export type CategorySection = CategoryLike & {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   products: any[]
@@ -161,6 +171,47 @@ export async function getCategorySections(parentSlug: string, perSection = 4): P
     children.sort(
       (a, b) => (DIGISHOP_ORDER[a.slug] ?? 99) - (DIGISHOP_ORDER[b.slug] ?? 99),
     )
+  }
+
+  // DI DONG: bo 6 con roi rac, thay bang 3 section ao chot.
+  // Them san pham root (233sp gan thang di-dong) vao section theo title.
+  if (parentSlug === 'di-dong') {
+    const bySlug = new Map(cats.map((c) => [c.slug, c.id]))
+    const sections: CategorySection[] = await Promise.all(
+      DI_DONG_SECTIONS.map(async (sec) => {
+        const ids = sec.from.map((s) => bySlug.get(s)).filter((x): x is number => x != null)
+        const { docs } = await payload.find({
+          collection: 'products',
+          where: { category: { in: [parent.id, ...ids] } },
+          limit: 100,
+          sort: ['-featured', 'order'],
+          depth: 1,
+        })
+        // Loc theo section: Data theo GB/DATA, Thoai theo PHUT/THOAI, Sim theo con lai.
+        // Root products duoc phan luong, con products da dung thi giu nguyen nhom.
+        const slugSet: Set<string> = new Set(sec.from as unknown as string[])
+        const filtered = (docs as unknown as { title?: string; category?: number | { id?: number } }[]).filter((p) => {
+          const rawCat = p.category
+          const cid = typeof rawCat === 'number' ? rawCat : (rawCat?.id ?? null)
+          if (cid !== parent.id) {
+            const hit = cats.find((c) => c.id === cid)
+            return hit ? slugSet.has(hit.slug) : false
+          }
+          const t = (p.title ?? '').toUpperCase()
+          if (sec.slug === 'goi-data') return t.includes('GB') || t.includes('DATA') || t.includes('GAME') || t.includes('TIKTOK') || t.includes('YOUTUBE')
+          if (sec.slug === 'tra-truoc') return t.includes('PHÚT') || t.includes('THOẠI') || t.includes('PHUT') || t.includes('THOAI')
+          return true
+        })
+        return {
+          id: 9000 + sec.slug.length,
+          name: sec.name,
+          slug: sec.slug,
+          products: filtered.slice(0, perSection),
+          ids,
+        } as unknown as CategorySection
+      }),
+    )
+    return { parent, sections: sections.filter((s) => s.products.length > 0) }
   }
 
   const sections: CategorySection[] = await Promise.all(

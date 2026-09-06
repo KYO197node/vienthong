@@ -165,11 +165,19 @@ export default async function CategoryPage({ params, searchParams }: Props) {
               {sections.map((s) => {
                 const groups = groupByBase(s.products as any)
                 const variant = variantForCategory(cat.slug as string)
+                const seeAll =
+                  cat.slug === 'di-dong'
+                    ? s.slug === 'goi-data'
+                      ? '/danh-muc/goi-cuoc-4g'
+                      : s.slug === 'tra-truoc'
+                        ? '/danh-muc/goi-cuoc-thoai'
+                        : '/danh-muc/sim-so'
+                    : `/danh-muc/${s.slug}`
                 return (
                   <section key={s.id} id={s.slug} className="digi-section" aria-labelledby={`digi-${s.slug}`}>
                     <div className="digi-section-head">
                       <h2 id={`digi-${s.slug}`}>{s.name}</h2>
-                      <Link className="digi-see-all" href={`/danh-muc/${s.slug}`}>
+                      <Link className="digi-see-all" href={seeAll}>
                         Xem tất cả →
                       </Link>
                     </div>
