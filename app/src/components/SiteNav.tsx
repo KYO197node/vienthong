@@ -41,6 +41,8 @@ export default function SiteNav({ items, categories }: { items: NavItem[]; categ
   }
 
   const active = categories.find((c) => c.id === activeRoot) ?? null
+  const childHref = (rSlug: string, cSlug: string) =>
+    rSlug === 'internet-truyen-hinh' ? `/danh-muc/${rSlug}#${cSlug}` : `/danh-muc/${cSlug}`
 
   return (
     <nav className="vt-nav" ref={navRef} aria-label="Menu chính">
@@ -144,7 +146,7 @@ export default function SiteNav({ items, categories }: { items: NavItem[]; categ
                                 <ul className={'vt-catmenu__sub' + (isActive ? ' open' : '')}>
                                   {r.children.map((s) => (
                                     <li key={s.id}>
-                                      <Link href={`/danh-muc/${s.slug}`} onClick={closeAll}>
+                                      <Link href={childHref(r.slug, s.slug)} onClick={closeAll}>
                                         {s.name}
                                       </Link>
                                     </li>
@@ -168,7 +170,7 @@ export default function SiteNav({ items, categories }: { items: NavItem[]; categ
                         <ul className="vt-catmenu__grid">
                           {active.children.map((s) => (
                             <li key={s.id}>
-                              <Link href={`/danh-muc/${s.slug}`} onClick={closeAll}>
+                              <Link href={childHref(active.slug, s.slug)} onClick={closeAll}>
                                 {s.name}
                               </Link>
                             </li>

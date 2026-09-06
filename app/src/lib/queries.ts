@@ -107,13 +107,86 @@ export async function getCategoryTree(onlyWithProducts = true) {
 
 /**
  * Tra ve id cua chinh danh muc + toan bo danh muc con (1 cap).
- * Can thiet vi san pham chi gan vao danh muc la; neu chi query dung id cua
- * danh muc cha thi trang danh muc cha se trong.
+ * Can thiet vi san pham chi gan vao danh muc la; nen neu chi query dung id cua
+ * danh muc cha thi trang se trong.
  */
 export async function getCategoryIdsWithChildren(catId: number): Promise<number[]> {
   const cats = (await getCategories()) as unknown as CategoryLike[]
   const childIds = cats.filter((c) => parentIdOf(c) === catId).map((c) => c.id)
   return [catId, ...childIds]
+}
+
+/**
+ * Gom cac danh muc home-* ve 5 muc chuan Digishop cho gon.
+ * internet-truyen-hinh hien co 10 con (5 chuan + 5 home-*), hien 10 pill rat roi.
+ */
+export const HOME_MERGE_MAP: Record<string, string> = {
+  'home-internet': 'internet-wifi-mesh',
+  'home-mesh': 'internet-wifi-mesh',
+  'home-tv': 'internet-truyen-hinh-combo',
+  'home-sanh': 'internet-di-dong',
+  'home-cam': 'internet-camera',
+}
+
+/** Thu tu chuan Digishop cho trang internet-truyen-hinh. */
+export const DIGISHOP_ORDER: Record<string, number> = {
+  'internet-wifi-mesh': 1,
+  'internet-truyen-hinh-combo': 2,
+  'internet-di-dong': 3,
+  'internet-camera': 4,
+  'truyen-hinh-mytv': 5,
+}
+
+export type CategorySection = CategoryLike & {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  products: any[]
+  ids: number[]
+}
+
+/**
+ * Section kieu Digishop cho trang cha: moi danh muc con + 4 san pham.
+ * Rieng internet-truyen-hinh chi tra 5 muc chuan, san pham home-* duoc gop vao.
+ */
+export async function getCategorySections(parentSlug: string, perSection = 4): Promise<{ parent: CategoryLike | null; sections: CategorySection[] }> {
+  const payload = await getPayloadClient()
+  const cats = (await getCategories()) as unknown as CategoryLike[]
+  const parent = cats.find((c) => c.slug === parentSlug) ?? null
+  if (!parent) return { parent: null, sections: [] }
+
+  let children = cats.filter((c) => parentIdOf(c) === (parent as CategoryLike).id)
+
+  // Gop home-* ve 5 muc chuan khi o trang internet-truyen-hinh
+  if (parentSlug === 'internet-truyen-hinh') {
+    children = children.filter((c) => !(c.slug in HOME_MERGE_MAP))
+    children.sort(
+      (a, b) => (DIGISHOP_ORDER[a.slug] ?? 99) - (DIGISHOP_ORDER[b.slug] ?? 99),
+    )
+  }
+
+  const sections: CategorySection[] = await Promise.all(
+    children.map(async (child) => {
+      let ids = [child.id]
+      if (parentSlug === 'internet-truyen-hinh') {
+        const merged = cats.filter((c) => HOME_MERGE_MAP[c.slug] === child.slug).map((c) => c.id)
+        ids = [child.id, ...merged]
+      }
+      const { docs } = await payload.find({
+        collection: 'products',
+        where: { category: { in: ids } },
+        limit: perSection,
+        sort: ['-featured', 'order'],
+        depth: 1,
+      })
+      return { ...child, products: docs, ids }
+    }),
+  )
+
+  return { parent, sections: sections.filter((s) => s.products.length > 0) }
+}
+
+/** Chon variant card kieu Digishop theo danh muc cha, khong doan bang includes. */
+export function variantForCategory(parentSlug: string | null | undefined): 'box-internet' | 'pack-item' {
+  return parentSlug === 'internet-truyen-hinh' ? 'box-internet' : 'pack-item'
 }
 
 /**

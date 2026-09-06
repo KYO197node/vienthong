@@ -2,17 +2,15 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import DigishopCard from '@/components/DigishopCard'
 import JsonLd from '@/components/JsonLd'
-import { getPayloadClient } from '@/lib/payload'
-import { getCategoryTree, getSettings } from '@/lib/queries'
-import { absoluteUrl, formatPrice } from '@/lib/utils'
+import { getCategoryTree, getProductsByCategory, getSettings } from '@/lib/queries'
+import { absoluteUrl } from '@/lib/utils'
 import { groupByBase } from '@/lib/variants'
+import { variantForCategory } from '@/lib/queries'
 
 // Render dong: `next build` dung SQLite con production dung Postgres,
 // nen khong the prerender HTML luc build. Du lieu duoc cache runtime
 // qua unstable_cache trong lib/queries.ts.
 export const dynamic = 'force-dynamic'
-
-const PER_PAGE = 24
 
 export const metadata: Metadata = {
   title: 'Sản phẩm — Dịch vụ',
@@ -24,19 +22,11 @@ export const metadata: Metadata = {
 type Props = { searchParams: Promise<{ page?: string }> }
 
 export default async function ShopPage({ searchParams }: Props) {
-  const { page: pageParam } = await searchParams
-  const page = Math.max(1, Number(pageParam) || 1)
+  await searchParams
+  const [tree, settings] = await Promise.all([getCategoryTree(), getSettings().catch(() => null)])
+  // Giong Digishop: /shop la muc luc 3 nhom chinh, moi nhom 4 goi noi bat.
+  const previews = await Promise.all(tree.map(async (r) => ({ root: r, ...(await getProductsByCategory(r.slug, 4)) })))
 
-  const payload = await getPayloadClient()
-  const [tree, settings, result] = await Promise.all([
-    getCategoryTree(),
-    getSettings().catch(() => null),
-    // Phan trang o phia server: truoc day tra ve 100 san pham mot lan,
-    // trang /shop dai 74 the va tai toan bo anh cung luc.
-    payload.find({ collection: 'products', limit: PER_PAGE, page, sort: ['-featured', 'order'], depth: 1 }),
-  ])
-
-  const { docs: products, totalPages, totalDocs, hasPrevPage, hasNextPage } = result
   const hotline = settings?.hotline ?? ''
 
   const jsonLd = {
@@ -45,8 +35,6 @@ export default async function ShopPage({ searchParams }: Props) {
     name: 'Sản phẩm — Dịch vụ Viễn Thông Nga Sơn',
     url: absoluteUrl('/shop'),
   }
-
-  const pageHref = (p: number) => (p <= 1 ? '/shop' : `/shop?page=${p}`)
 
   return (
     <div className="vt-container">
@@ -61,88 +49,39 @@ export default async function ShopPage({ searchParams }: Props) {
       <section className="vt-section">
         <div className="vt-cat-head">
           <h1>Tất cả sản phẩm &amp; dịch vụ</h1>
-          <p className="vt-cat-desc">
-            {totalDocs} sản phẩm — trang {page}/{Math.max(1, totalPages)}
-          </p>
+          <p className="vt-cat-desc">3 nhóm chính: Di động / Internet - Truyền hình / Dịch vụ số.</p>
         </div>
 
-        {/* Danh muc nhom theo cap thay vi 16 link phang khong thu tu. */}
-        {tree.length > 0 && (
-          <nav className="vt-catnav" aria-label="Danh mục sản phẩm">
-            {tree.map((root) => (
-              <div className="vt-catnav__group" key={root.id}>
-                <Link className="vt-catnav__root" href={`/danh-muc/${root.slug}`}>
-                  {root.name}
-                </Link>
-                {root.children.length > 0 && (
-                  <ul className="vt-catnav__children">
-                    {root.children.map((c) => (
-                      <li key={c.id}>
-                        <Link href={`/danh-muc/${c.slug}`}>{c.name}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
-          </nav>
-        )}
-
-        {products.length > 0 ? (
-          <>
-            {(() => {
-              const groups = groupByBase(products as any)
-              return (
-                <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap:'16px'}}>
-                  {groups.slice(0, 24).map((g) => {
+        <div className="digi-sections">
+          {previews.map(({ root, products }) => {
+            if (products.length === 0) return null
+            const groups = groupByBase(products as any)
+            const variant = variantForCategory(root.slug as string)
+            return (
+              <section key={root.id} id={root.slug} className="digi-section" aria-labelledby={`digi-shop-${root.slug}`}>
+                <div className="digi-section-head">
+                  <h2 id={`digi-shop-${root.slug}`}>{root.name}</h2>
+                  <Link className="digi-see-all" href={`/danh-muc/${root.slug}`}>
+                    Xem tất cả →
+                  </Link>
+                </div>
+                <div className="digi-grid">
+                  {groups.map((g) => {
                     const main = g.products[0]
-                    const isInternet = (main.category as any)?.slug?.includes('internet') || g.base.includes('HOME')
                     return (
                       <DigishopCard
                         key={main.id}
                         product={{ ...main, title: g.base, price: g.minPrice } as any}
                         hotline={hotline}
-                        variant={isInternet ? 'box-internet' : 'pack-item'}
+                        variant={variant}
                       />
                     )
                   })}
                 </div>
-              )
-            })()}
-
-            {totalPages > 1 && (
-              <nav className="vt-pagination" aria-label="Phân trang">
-                {hasPrevPage && (
-                  <Link className="page-numbers" href={pageHref(page - 1)} rel="prev">
-                    ← Trước
-                  </Link>
-                )}
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) =>
-                  p === page ? (
-                    <span className="page-numbers current" key={p} aria-current="page">
-                      {p}
-                    </span>
-                  ) : (
-                    <Link className="page-numbers" href={pageHref(p)} key={p}>
-                      {p}
-                    </Link>
-                  ),
-                )}
-                {hasNextPage && (
-                  <Link className="page-numbers" href={pageHref(page + 1)} rel="next">
-                    Sau →
-                  </Link>
-                )}
-              </nav>
-            )}
-          </>
-        ) : (
-          <div className="vt-empty">
-            <p>
-              <strong>Chưa có sản phẩm.</strong>
-            </p>
-          </div>
-        )}
+              </section>
+            )
+          })}
+        </div>
       </section>
     </div>
   )

@@ -720,3 +720,18 @@ select:focus-visible, textarea:focus-visible {
 .digibox__btns { display: flex; border-top: 1px solid #e2e8f0; }
 .digibox__btn-detail { flex: 1; text-align: center; padding: 12px; color: #0095d9; font-weight: 700; font-size: 13px; border-right: 1px solid #e2e8f0; }
 .digibox__btn-reg { flex: 1; text-align: center; padding: 12px; background: #0095d9; color: #fff; font-weight: 700; font-size: 13px; }
+
+/* ===== Digishop sections kieu internet-tv?tab=c561 ===== */
+.digi-sections { display: flex; flex-direction: column; gap: 36px; margin-top: 8px; }
+.digi-section { scroll-margin-top: 150px; background: #fff; border: 1px solid var(--vt-border); border-radius: 16px; padding: 20px; box-shadow: var(--vt-shadow); }
+.digi-section-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #eef2f7; }
+.digi-section-head h2 { margin: 0; font-size: 18px; font-weight: 800; color: var(--vt-primary-dark); text-transform: uppercase; letter-spacing: .2px; }
+.digi-see-all { font-size: 13.5px; font-weight: 700; color: var(--vt-primary); padding: 6px 12px; border-radius: 999px; background: #f1f5f9; white-space: nowrap; }
+.digi-see-all:hover { background: var(--vt-primary); color: #fff; }
+.digi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 1100px) { .digi-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 767px) {
+  .digi-section { padding: 14px; border-radius: 12px; }
+  .digi-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; margin: 0 -14px; padding-left: 14px; padding-right: 14px; }
+  .digi-grid > * { flex: 0 0 78%; scroll-snap-align: start; }
+}

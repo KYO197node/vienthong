@@ -4,8 +4,16 @@ import { notFound } from 'next/navigation'
 import JsonLd from '@/components/JsonLd'
 import DigishopCard from '@/components/DigishopCard'
 import { getPayloadClient } from '@/lib/payload'
-import { getSettings, getCategoryIdsWithChildren, getCategories, parentIdOf, type CategoryLike } from '@/lib/queries'
-import { absoluteUrl, formatPrice } from '@/lib/utils'
+import {
+  getSettings,
+  getCategoryIdsWithChildren,
+  getCategories,
+  getCategorySections,
+  parentIdOf,
+  variantForCategory,
+  type CategoryLike,
+} from '@/lib/queries'
+import { absoluteUrl } from '@/lib/utils'
 import { groupByBase } from '@/lib/variants'
 
 // Render dong: `next build` dung SQLite con production dung Postgres,
@@ -47,37 +55,51 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   const cat = cats[0]
   if (!cat) notFound()
 
-  // Gom san pham cua chinh danh muc + tat ca danh muc con. San pham chi duoc gan
-  // vao danh muc la, nen neu chi query dung id cua danh muc cha thi trang se trong.
-  const ids = await getCategoryIdsWithChildren(cat.id as number)
-  const { docs: products, totalPages, hasPrevPage, hasNextPage } = await payload.find({
-    collection: 'products',
-    where: { category: { in: ids } },
-    limit: PER_PAGE,
-    page,
-    // Goi noi bat (featured) dung dau tiep theo la thu tu khai bao.
-    sort: ['-featured', 'order'],
-    depth: 1,
-  })
-
   const allCats = (await getCategories()) as unknown as CategoryLike[]
   const children = allCats.filter((c) => parentIdOf(c) === cat.id)
   const parentId = parentIdOf(cat as unknown as CategoryLike)
   const parent = parentId ? allCats.find((c) => c.id === parentId) : null
+  const isParent = children.length > 0
 
   const settings = await getSettings().catch(() => null)
   const hotline = settings?.hotline ?? ''
+
+  // Trang cha kieu Digishop: moi muc con 4 san pham, khong phan trang tron.
+  // Trang la giu query cu + phan trang.
+  const sections = isParent ? (await getCategorySections(cat.slug as string, 4)).sections : []
+  const flatSectionProducts = sections.flatMap((s) => s.products)
+
+  let products: Awaited<ReturnType<typeof payload.find>>['docs'] = []
+  let totalPages = 1
+  let hasPrevPage = false
+  let hasNextPage = false
+  if (!isParent) {
+    const ids = await getCategoryIdsWithChildren(cat.id as number)
+    const res = await payload.find({
+      collection: 'products',
+      where: { category: { in: ids } },
+      limit: PER_PAGE,
+      page,
+      // Goi noi bat (featured) dung dau tiep theo la thu tu khai bao.
+      sort: ['-featured', 'order'],
+      depth: 1,
+    })
+    products = res.docs
+    totalPages = res.totalPages
+    hasPrevPage = res.hasPrevPage
+    hasNextPage = res.hasNextPage
+  }
 
   const jsonLd = [
     {
       '@context': 'https://schema.org',
       '@type': 'ItemList',
       name: cat.name,
-      itemListElement: products.map((p, i) => ({
+      itemListElement: (isParent ? flatSectionProducts.slice(0, 20) : products).map((p, i) => ({
         '@type': 'ListItem',
-        position: (page - 1) * PER_PAGE + i + 1,
-        url: absoluteUrl(`/san-pham/${p.slug}`),
-        name: p.title,
+        position: (isParent ? 0 : page - 1) * 0 + i + 1,
+        url: absoluteUrl(`/san-pham/${(p as { slug: string }).slug}`),
+        name: (p as { title: string }).title,
       })),
     },
     {
@@ -117,8 +139,17 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           </p>
         </div>
 
-        {/* Danh muc con: dieu huong sau hon thay vi de nguoi dung mac ket. */}
-        {children.length > 0 && (
+        {/* Trang cha: anchor #slug kieu Digishop de nhay toi tung section. */}
+        {isParent && sections.length > 0 && (
+          <nav className="vt-subcats" aria-label={`Danh mục con của ${cat.name}`}>
+            {sections.map((s) => (
+              <a key={s.id} href={`#${s.slug}`}>
+                {s.name}
+              </a>
+            ))}
+          </nav>
+        )}
+        {!isParent && children.length > 0 && (
           <nav className="vt-subcats" aria-label={`Danh mục con của ${cat.name}`}>
             {children.map((c) => (
               <Link key={c.id} href={`/danh-muc/${c.slug}`}>
@@ -128,7 +159,54 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           </nav>
         )}
 
-        {products.length > 0 ? (
+        {isParent ? (
+          sections.length > 0 ? (
+            <div className="digi-sections">
+              {sections.map((s) => {
+                const groups = groupByBase(s.products as any)
+                const variant = variantForCategory(cat.slug as string)
+                return (
+                  <section key={s.id} id={s.slug} className="digi-section" aria-labelledby={`digi-${s.slug}`}>
+                    <div className="digi-section-head">
+                      <h2 id={`digi-${s.slug}`}>{s.name}</h2>
+                      <Link className="digi-see-all" href={`/danh-muc/${s.slug}`}>
+                        Xem tất cả →
+                      </Link>
+                    </div>
+                    <div className="digi-grid">
+                      {groups.map((g) => {
+                        const main = g.products[0]
+                        return (
+                          <DigishopCard
+                            key={main.id}
+                            product={{ ...main, title: g.base, price: g.minPrice } as any}
+                            hotline={hotline}
+                            variant={variant}
+                          />
+                        )
+                      })}
+                    </div>
+                  </section>
+                )
+              })}
+            </div>
+          ) : (
+            <div className="vt-empty">
+              <p>
+                <strong>Chưa có sản phẩm trong danh mục này.</strong>
+              </p>
+              <p>
+                Vui lòng xem <Link href="/shop">toàn bộ sản phẩm</Link>
+                {hotline && (
+                  <>
+                    {' '}hoặc gọi hotline <a href={`tel:${hotline.replace(/[^0-9]/g, '')}`}>{hotline}</a> để được tư vấn
+                  </>
+                )}
+                .
+              </p>
+            </div>
+          )
+        ) : products.length > 0 ? (
           <>
             {(() => {
               const groups = groupByBase(products as any)
@@ -144,13 +222,12 @@ export default async function CategoryPage({ params, searchParams }: Props) {
                   <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap:'16px'}}>
                     {groups.map((g) => {
                       const main = g.products[0]
-                      const isInternet = (main.category as any)?.slug?.includes('internet') || g.base.includes('HOME')
                       return (
                         <DigishopCard
                           key={main.id}
                           product={{ ...main, title: g.base, price: g.minPrice } as any}
                           hotline={hotline}
-                          variant={isInternet ? 'box-internet' : 'pack-item'}
+                          variant={variantForCategory(parent?.slug ?? cat.slug as string)}
                         />
                       )
                     })}
