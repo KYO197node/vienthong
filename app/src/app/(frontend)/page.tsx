@@ -191,13 +191,18 @@ export default async function HomePage() {
             <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap:'16px'}}>
               {groups.slice(0, 8).map((g) => {
                 const main = g.products[0]
-                const isInternet = (main.category as any)?.slug?.includes('internet') || g.base.includes('HOME')
+                const catSlug = (main.category as any)?.slug ?? ''
+                const variant = catSlug === 'internet-truyen-hinh' || g.base.includes('HOME')
+                  ? 'box-internet'
+                  : s.slug === 'di-dong'
+                    ? 'soda'
+                    : 'pack-item'
                 return (
                   <DigishopCard
                     key={main.id}
                     product={{ ...main, title: g.base, price: g.minPrice } as any}
                     hotline={hotline}
-                    variant={isInternet ? 'box-internet' : 'pack-item'}
+                    variant={variant}
                   />
                 )
               })}

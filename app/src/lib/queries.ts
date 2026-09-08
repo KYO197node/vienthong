@@ -236,8 +236,10 @@ export async function getCategorySections(parentSlug: string, perSection = 4): P
 }
 
 /** Chon variant card kieu Digishop theo danh muc cha, khong doan bang includes. */
-export function variantForCategory(parentSlug: string | null | undefined): 'box-internet' | 'pack-item' {
-  return parentSlug === 'internet-truyen-hinh' ? 'box-internet' : 'pack-item'
+export function variantForCategory(parentSlug: string | null | undefined): 'box-internet' | 'pack-item' | 'soda' {
+  if (parentSlug === 'internet-truyen-hinh') return 'box-internet'
+  if (parentSlug === 'di-dong') return 'soda'
+  return 'pack-item'
 }
 
 /**
