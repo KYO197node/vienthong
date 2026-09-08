@@ -171,7 +171,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
                       ? '/danh-muc/goi-cuoc-4g'
                       : s.slug === 'tra-truoc'
                         ? '/danh-muc/goi-cuoc-thoai'
-                        : '/danh-muc/sim-so'
+                        : '/danh-muc/combo-thoai-data'
                     : `/danh-muc/${s.slug}`
                 return (
                   <section key={s.id} id={s.slug} className="digi-section" aria-labelledby={`digi-${s.slug}`}>

@@ -142,9 +142,9 @@ export const DIGISHOP_ORDER: Record<string, number> = {
  * slug ao on dinh de lam anchor #goi-data/#tra-truoc/#tra-sau.
  */
 export const DI_DONG_SECTIONS = [
-  { slug: 'goi-data', name: 'Gói Data', from: ['goi-cuoc-4g', 'goi-ung-dung'] },
-  { slug: 'tra-truoc', name: 'Trả trước', from: ['goi-cuoc-thoai', 'combo-thoai-data'] },
-  { slug: 'tra-sau', name: 'Trả sau', from: ['sim-so', 'chuyen-vung-quoc-te'] },
+  { slug: 'goi-data', name: 'Gói Data', from: ['goi-cuoc-4g'] },
+  { slug: 'tra-truoc', name: 'Trả trước', from: ['goi-cuoc-thoai'] },
+  { slug: 'tra-sau', name: 'Trả sau', from: ['combo-thoai-data'] },
 ] as const
 
 export type CategorySection = CategoryLike & {
