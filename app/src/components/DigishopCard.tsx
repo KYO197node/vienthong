@@ -1,6 +1,5 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import { formatPrice, isPriceOnRequest, mediaSrc } from '@/lib/utils'
+import { formatPrice, isPriceOnRequest } from '@/lib/utils'
 
 type Props = {
   product: any
@@ -68,8 +67,6 @@ function sodaPill(title: string, desc: unknown): string {
 }
 
 export default function DigishopCard({ product, hotline = '', variant = 'pack-item' }: Props) {
-  const media = typeof product.image === 'object' && product.image !== null ? product.image : null
-  const img = mediaSrc(media?.url)
   const tel = hotline.replace(/[^0-9]/g, '')
   const onRequest = isPriceOnRequest(product.price)
   const cycleLabel = product.unit === '/tháng' ? '30 ngày' : String(product.unit ?? '').replace(/^\//, '') || '30 ngày'
@@ -133,18 +130,9 @@ export default function DigishopCard({ product, hotline = '', variant = 'pack-it
     )
   }
 
-  // pack-item for di-dong
+  // pack-item for di-dong (khong dung anh, chi chu + gia + mo ta)
   return (
     <div className="pack-item-digi">
-      <div className="pack-item-digi__img">
-        <Link href={`/san-pham/${product.slug}`}>
-          {img ? (
-            <Image src={img} alt={product.title} width={300} height={300} />
-          ) : (
-            <div style={{width:'100%',height:'180px',background:'#f1f5f9',display:'flex',alignItems:'center',justifyContent:'center'}}>📱</div>
-          )}
-        </Link>
-      </div>
       <div className="pack-item-digi__content">
         <Link href={`/san-pham/${product.slug}`}><h2 className="pack-item-digi__title">{product.title}</h2></Link>
         <div className="pack-item-digi__price">{!onRequest && <span className="pack-item-digi__current">{formatPrice(product.price)}</span>}</div>

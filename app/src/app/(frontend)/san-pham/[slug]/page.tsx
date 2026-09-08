@@ -72,6 +72,12 @@ export default async function ProductPage({ params }: Props) {
   const media = product.image && typeof product.image === 'object' ? product.image : null
   const img = mediaSrc(media?.url)
   const onRequest = isPriceOnRequest(product.price)
+  // Cam / Mesh / MyTV le hien kieu Home (khong anh), ke ca khi co anh upload sau nay
+  const catSlug = typeof product.category === 'object' && product.category ? (product.category as { slug?: string }).slug ?? '' : ''
+  const hideMedia =
+    catSlug === 'internet-camera' ||
+    catSlug === 'truyen-hinh-mytv' ||
+    /CAM|MESH|CLOUD|64GB|PACK|MYTV|VTV|SCTV|GALAXY|HBO|ELOPLAY|QUẢNG CÁO/i.test(product.title)
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -123,7 +129,7 @@ export default async function ProductPage({ params }: Props) {
 
       <article className="vt-page vt-product">
         <div className="vt-product__grid">
-          {img && (
+          {img && !hideMedia && (
             <div className="vt-product__media">
               <Image
                 src={img}

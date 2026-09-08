@@ -3,7 +3,7 @@ import Link from 'next/link'
 import HeroSlider from '@/components/HeroSlider'
 import DigishopCard from '@/components/DigishopCard'
 import JsonLd from '@/components/JsonLd'
-import { getSettings, getCategoryTree, getProductsByCategory, getLatestPosts } from '@/lib/queries'
+import { getSettings, getCategoryTree, getProductsByCategory, getLatestPosts, variantForCategory } from '@/lib/queries'
 import { absoluteUrl, formatPrice, mediaSrc } from '@/lib/utils'
 import { groupByBase } from '@/lib/variants'
 import Image from 'next/image'
@@ -191,12 +191,7 @@ export default async function HomePage() {
             <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap:'16px'}}>
               {groups.slice(0, 8).map((g) => {
                 const main = g.products[0]
-                const catSlug = (main.category as any)?.slug ?? ''
-                const variant = catSlug === 'internet-truyen-hinh' || g.base.includes('HOME')
-                  ? 'box-internet'
-                  : s.slug === 'di-dong'
-                    ? 'soda'
-                    : 'pack-item'
+                const variant = variantForCategory(s.slug)
                 return (
                   <DigishopCard
                     key={main.id}
