@@ -1,0 +1,1464 @@
+{
+ "goi": [
+  {
+   "n": "Home1_M",
+   "nh": "★ GÓI TẤN CÔNG",
+   "md": "3 gói cùng giá 195.000đ — khách chọn 1 trong 3: Mesh, Truyền hình hoặc Camera",
+   "tp": {
+    "Dịch vụ FiberVNN": "300 Mbps",
+    "Thiết bị Mesh": "01 Mesh 6"
+   },
+   "g": {
+    "1 tháng": 195000,
+    "3 tháng": 585000,
+    "6 tháng": 1170000,
+    "12/13 tháng": 2340000
+   }
+  },
+  {
+   "n": "HomeTV_B",
+   "nh": "★ GÓI TẤN CÔNG",
+   "md": "3 gói cùng giá 195.000đ — khách chọn 1 trong 3: Mesh, Truyền hình hoặc Camera",
+   "tp": {
+    "Dịch vụ FiberVNN": "300 Mbps",
+    "Dịch vụ MyTV": "Truyền hình MyTV S1/MyTV S2 (App)"
+   },
+   "g": {
+    "1 tháng": 195000,
+    "3 tháng": 585000,
+    "6 tháng": 1170000,
+    "12/13 tháng": 2340000
+   }
+  },
+  {
+   "n": "Home Cam Canh",
+   "nh": "★ GÓI TẤN CÔNG",
+   "md": "3 gói cùng giá 195.000đ — khách chọn 1 trong 3: Mesh, Truyền hình hoặc Camera",
+   "tp": {
+    "Dịch vụ FiberVNN": "300 Mbps",
+    "Thiết bị Camera": "01 Camera Indoor + Cloud (1 ngày)"
+   },
+   "g": {
+    "1 tháng": 195000,
+    "3 tháng": 585000,
+    "6 tháng": 1170000,
+    "12/13 tháng": 2340000
+   }
+  },
+  {
+   "n": "Home 1",
+   "nh": "Home Internet",
+   "md": "Internet đơn thuần, đã gồm Modem WiFi + GreenNet",
+   "tp": {
+    "Tốc độ Fiber VNN": "300 Mbps"
+   },
+   "g": {
+    "1 tháng": 190000,
+    "3 tháng": 570000,
+    "6 tháng": 1140000,
+    "9 tháng": 1710000,
+    "12/13 tháng": 2280000
+   }
+  },
+  {
+   "n": "Home 2",
+   "nh": "Home Internet",
+   "md": "Internet đơn thuần, đã gồm Modem WiFi + GreenNet",
+   "tp": {
+    "Tốc độ Fiber VNN": "500ULM (*)"
+   },
+   "g": {
+    "1 tháng": 235000,
+    "3 tháng": 705000,
+    "6 tháng": 1410000,
+    "9 tháng": 2115000,
+    "12/13 tháng": 2820000
+   }
+  },
+  {
+   "n": "Home 3",
+   "nh": "Home Internet",
+   "md": "Internet đơn thuần, đã gồm Modem WiFi + GreenNet",
+   "tp": {
+    "Tốc độ Fiber VNN": "1Gbpsps"
+   },
+   "g": {
+    "1 tháng": 290000,
+    "3 tháng": 870000,
+    "6 tháng": 1740000,
+    "9 tháng": 2610000,
+    "12/13 tháng": 3480000
+   }
+  },
+  {
+   "n": "Home 1 (1 Mesh)",
+   "nh": "Home Internet + Mesh",
+   "md": "Internet kèm thiết bị Mesh phủ sóng toàn nhà",
+   "tp": {
+    "Tốc độ Fiber VNN": "300 Mbps",
+    "Thiết bị Mesh": "01 Mesh 6"
+   },
+   "g": {
+    "1 tháng": 215000,
+    "3 tháng": 645000,
+    "6 tháng": 1290000,
+    "9 tháng": 1935000,
+    "12/13 tháng": 2580000
+   }
+  },
+  {
+   "n": "Home 1 (2 Mesh)",
+   "nh": "Home Internet + Mesh",
+   "md": "Internet kèm thiết bị Mesh phủ sóng toàn nhà",
+   "tp": {
+    "Tốc độ Fiber VNN": "300 Mbps",
+    "Thiết bị Mesh": "02 Mesh 6"
+   },
+   "g": {
+    "1 tháng": 220000,
+    "3 tháng": 660000,
+    "6 tháng": 1320000,
+    "9 tháng": 1980000,
+    "12/13 tháng": 2640000
+   }
+  },
+  {
+   "n": "Home 2 (1 Mesh)",
+   "nh": "Home Internet + Mesh",
+   "md": "Internet kèm thiết bị Mesh phủ sóng toàn nhà",
+   "tp": {
+    "Tốc độ Fiber VNN": "500ULM (*)",
+    "Thiết bị Mesh": "01 Mesh 6"
+   },
+   "g": {
+    "1 tháng": 240000,
+    "3 tháng": 720000,
+    "6 tháng": 1440000,
+    "9 tháng": 2160000,
+    "12/13 tháng": 2880000
+   }
+  },
+  {
+   "n": "Home 2 (2 Mesh)",
+   "nh": "Home Internet + Mesh",
+   "md": "Internet kèm thiết bị Mesh phủ sóng toàn nhà",
+   "tp": {
+    "Tốc độ Fiber VNN": "500ULM (*)",
+    "Thiết bị Mesh": "02 Mesh 6"
+   },
+   "g": {
+    "1 tháng": 245000,
+    "3 tháng": 735000,
+    "6 tháng": 1470000,
+    "9 tháng": 2205000,
+    "12/13 tháng": 2940000
+   }
+  },
+  {
+   "n": "Home 3 (1 Mesh)",
+   "nh": "Home Internet + Mesh",
+   "md": "Internet kèm thiết bị Mesh phủ sóng toàn nhà",
+   "tp": {
+    "Tốc độ Fiber VNN": "1Gbps",
+    "Thiết bị Mesh": "01 Mesh 6"
+   },
+   "g": {
+    "1 tháng": 310000,
+    "3 tháng": 930000,
+    "6 tháng": 1860000,
+    "9 tháng": 2790000,
+    "12/13 tháng": 3720000
+   }
+  },
+  {
+   "n": "Home 3 (2 Mesh)",
+   "nh": "Home Internet + Mesh",
+   "md": "Internet kèm thiết bị Mesh phủ sóng toàn nhà",
+   "tp": {
+    "Tốc độ Fiber VNN": "1Gbps",
+    "Thiết bị Mesh": "02 Mesh 6"
+   },
+   "g": {
+    "1 tháng": 335000,
+    "3 tháng": 1005000,
+    "6 tháng": 2010000,
+    "9 tháng": 3015000,
+    "12/13 tháng": 4020000
+   }
+  },
+  {
+   "n": "HomeTV 1",
+   "nh": "HomeTV (Internet + MyTV)",
+   "md": "Internet kèm truyền hình MyTV",
+   "tp": {
+    "Tốc độ Fiber VNN": "300 Mbps",
+    "Truyền hình MyTV": "Truyền hình MyTV (App) (Khách hàng lựa chọn 1 trong 4: MyT…"
+   },
+   "g": {
+    "1 tháng": 215000,
+    "3 tháng": 645000,
+    "6 tháng": 1290000,
+    "9 tháng": 1935000,
+    "12/13 tháng": 2580000
+   }
+  },
+  {
+   "n": "HomeTV 2",
+   "nh": "HomeTV (Internet + MyTV)",
+   "md": "Internet kèm truyền hình MyTV",
+   "tp": {
+    "Tốc độ Fiber VNN": "500ULM (*)",
+    "Truyền hình MyTV": "Truyền hình MyTV (App) (Khách hàng lựa chọn 1 trong 4: MyT…"
+   },
+   "g": {
+    "1 tháng": 240000,
+    "3 tháng": 720000,
+    "6 tháng": 1440000,
+    "9 tháng": 2160000,
+    "12/13 tháng": 2880000
+   }
+  },
+  {
+   "n": "HomeTV3",
+   "nh": "HomeTV (Internet + MyTV)",
+   "md": "Internet kèm truyền hình MyTV",
+   "tp": {
+    "Tốc độ Fiber VNN": "1Gbps",
+    "Truyền hình MyTV": "Truyền hình MyTV (App) (Khách hàng lựa chọn 1 trong 4: MyT…"
+   },
+   "g": {
+    "1 tháng": 310000,
+    "3 tháng": 930000,
+    "6 tháng": 1860000,
+    "9 tháng": 2790000,
+    "12/13 tháng": 3720000
+   }
+  },
+  {
+   "n": "HomeTV 1 (Mesh)",
+   "nh": "HomeTV + Mesh",
+   "md": "Internet + MyTV + Mesh",
+   "tp": {
+    "Tốc độ Fiber VNN": "300 Mbps",
+    "Thiết bị Mesh": "01 Mesh 6",
+    "Truyền hình MyTV": "Truyền hình MyTV (App) (Khách hàng lựa chọn 1 trong 4: MyT…"
+   },
+   "g": {
+    "1 tháng": 230000,
+    "3 tháng": 690000,
+    "6 tháng": 1380000,
+    "9 tháng": 2070000,
+    "12/13 tháng": 2760000
+   }
+  },
+  {
+   "n": "HomeTV 2 (Mesh)",
+   "nh": "HomeTV + Mesh",
+   "md": "Internet + MyTV + Mesh",
+   "tp": {
+    "Tốc độ Fiber VNN": "500ULM (*)",
+    "Thiết bị Mesh": "01 Mesh 6",
+    "Truyền hình MyTV": "Truyền hình MyTV (App) (Khách hàng lựa chọn 1 trong 4: MyT…"
+   },
+   "g": {
+    "1 tháng": 250000,
+    "3 tháng": 750000,
+    "6 tháng": 1500000,
+    "9 tháng": 2250000,
+    "12/13 tháng": 3000000
+   }
+  },
+  {
+   "n": "HomeTV 2 (2 Mesh)",
+   "nh": "HomeTV + Mesh",
+   "md": "Internet + MyTV + Mesh",
+   "tp": {
+    "Tốc độ Fiber VNN": "500ULM (*)",
+    "Thiết bị Mesh": "02 Mesh 6",
+    "Truyền hình MyTV": "Truyền hình MyTV (App) (Khách hàng lựa chọn 1 trong 4: MyT…"
+   },
+   "g": {
+    "1 tháng": 265000,
+    "3 tháng": 795000,
+    "6 tháng": 1590000,
+    "9 tháng": 2385000,
+    "12/13 tháng": 3180000
+   }
+  },
+  {
+   "n": "HomeTV 3 (Mesh)",
+   "nh": "HomeTV + Mesh",
+   "md": "Internet + MyTV + Mesh",
+   "tp": {
+    "Tốc độ Fiber VNN": "1Gbps",
+    "Thiết bị Mesh": "01 Mesh 6",
+    "Truyền hình MyTV": "Truyền hình MyTV (App) (Khách hàng lựa chọn 1 trong 4: MyT…"
+   },
+   "g": {
+    "1 tháng": 330000,
+    "3 tháng": 990000,
+    "6 tháng": 1980000,
+    "9 tháng": 2970000,
+    "12/13 tháng": 3960000
+   }
+  },
+  {
+   "n": "HomeTV 3 (2 Mesh)",
+   "nh": "HomeTV + Mesh",
+   "md": "Internet + MyTV + Mesh",
+   "tp": {
+    "Tốc độ Fiber VNN": "1Gbps",
+    "Thiết bị Mesh": "02 Mesh 6",
+    "Truyền hình MyTV": "Truyền hình MyTV (App) (Khách hàng lựa chọn 1 trong 4: MyT…"
+   },
+   "g": {
+    "1 tháng": 355000,
+    "3 tháng": 1065000,
+    "6 tháng": 2130000,
+    "9 tháng": 3195000,
+    "12/13 tháng": 4260000
+   }
+  },
+  {
+   "n": "HomeTV VIP1",
+   "nh": "HomeTV VIP",
+   "md": "Internet + MyTV VIP (168 kênh)",
+   "tp": {
+    "Tốc độ Fiber VNN": "300 Mbps",
+    "Truyền hình MyTV": "Truyền hình MyTV (MyTV VIP - App)"
+   },
+   "g": {
+    "1 tháng": 240000,
+    "3 tháng": 720000,
+    "6 tháng": 1440000,
+    "12/13 tháng": 2880000
+   }
+  },
+  {
+   "n": "HomeTV VIP1 (Mesh)",
+   "nh": "HomeTV VIP",
+   "md": "Internet + MyTV VIP (168 kênh)",
+   "tp": {
+    "Tốc độ Fiber VNN": "300 Mbps",
+    "Thiết bị Mesh": "01 Mesh 6",
+    "Truyền hình MyTV": "Truyền hình MyTV (MyTV VIP - App)"
+   },
+   "g": {
+    "1 tháng": 270000,
+    "3 tháng": 810000,
+    "6 tháng": 1620000,
+    "12/13 tháng": 3240000
+   }
+  },
+  {
+   "n": "HomeTV VIP3 (Mesh)",
+   "nh": "HomeTV VIP",
+   "md": "Internet + MyTV VIP (168 kênh)",
+   "tp": {
+    "Tốc độ Fiber VNN": "500ULM (*)",
+    "Thiết bị Mesh": "01 Mesh 6",
+    "Truyền hình MyTV": "Truyền hình MyTV (MyTV VIP - App)"
+   },
+   "g": {
+    "1 tháng": 360000,
+    "3 tháng": 1080000,
+    "6 tháng": 2160000,
+    "12/13 tháng": 4320000
+   }
+  },
+  {
+   "n": "Home Cam 1",
+   "nh": "Home Cam",
+   "md": "Internet + Camera + Cloud 3 ngày",
+   "tp": {
+    "Tốc độ Fiber VNN": "300 Mbps",
+    "Thiết bị Camera + Cloud": "01 Camera Indoor + Cloud (3 ngày)"
+   },
+   "g": {
+    "1 tháng": 215000,
+    "3 tháng": 645000,
+    "6 tháng": 1290000,
+    "9 tháng": 1935000,
+    "12/13 tháng": 2580000
+   }
+  },
+  {
+   "n": "Home Cam 2",
+   "nh": "Home Cam",
+   "md": "Internet + Camera + Cloud 3 ngày",
+   "tp": {
+    "Tốc độ Fiber VNN": "500ULM (*)",
+    "Thiết bị Camera + Cloud": "01 Camera Indoor + Cloud (3 ngày)"
+   },
+   "g": {
+    "1 tháng": 240000,
+    "3 tháng": 720000,
+    "6 tháng": 1440000,
+    "9 tháng": 2160000,
+    "12/13 tháng": 2880000
+   }
+  },
+  {
+   "n": "Home Cam 3",
+   "nh": "Home Cam",
+   "md": "Internet + Camera + Cloud 3 ngày",
+   "tp": {
+    "Tốc độ Fiber VNN": "1Gbps",
+    "Thiết bị Camera + Cloud": "01 Camera Indoor + Cloud (3 ngày)"
+   },
+   "g": {
+    "1 tháng": 310000,
+    "3 tháng": 930000,
+    "6 tháng": 1860000,
+    "9 tháng": 2790000,
+    "12/13 tháng": 3720000
+   }
+  },
+  {
+   "n": "Home Cam 1 (Mesh)",
+   "nh": "Home Cam + Mesh",
+   "md": "Internet + Camera + Mesh",
+   "tp": {
+    "Tốc độ Fiber VNN": "300 Mbps",
+    "Thiết bị Camera + Cloud": "01 Camera Indoor + Cloud (3 ngày)",
+    "Thiết bị Mesh": "01 Mesh 6"
+   },
+   "g": {
+    "1 tháng": 230000,
+    "3 tháng": 690000,
+    "6 tháng": 1380000,
+    "9 tháng": 2070000,
+    "12/13 tháng": 2760000
+   }
+  },
+  {
+   "n": "Home Cam 2 (Mesh)",
+   "nh": "Home Cam + Mesh",
+   "md": "Internet + Camera + Mesh",
+   "tp": {
+    "Tốc độ Fiber VNN": "500ULM (*)",
+    "Thiết bị Camera + Cloud": "01 Camera Indoor + Cloud (3 ngày)",
+    "Thiết bị Mesh": "01 Mesh 6"
+   },
+   "g": {
+    "1 tháng": 250000,
+    "3 tháng": 750000,
+    "6 tháng": 1500000,
+    "9 tháng": 2250000,
+    "12/13 tháng": 3000000
+   }
+  },
+  {
+   "n": "Home Cam 2 (2 Mesh)",
+   "nh": "Home Cam + Mesh",
+   "md": "Internet + Camera + Mesh",
+   "tp": {
+    "Tốc độ Fiber VNN": "500ULM (*)",
+    "Thiết bị Camera + Cloud": "01 Camera Indoor + Cloud (3 ngày)",
+    "Thiết bị Mesh": "02 Mesh 6"
+   },
+   "g": {
+    "1 tháng": 265000,
+    "3 tháng": 795000,
+    "6 tháng": 1590000,
+    "9 tháng": 2385000,
+    "12/13 tháng": 3180000
+   }
+  },
+  {
+   "n": "Home Cam 3 (Mesh)",
+   "nh": "Home Cam + Mesh",
+   "md": "Internet + Camera + Mesh",
+   "tp": {
+    "Tốc độ Fiber VNN": "1Gbps",
+    "Thiết bị Camera + Cloud": "01 Camera Indoor + Cloud (3 ngày)",
+    "Thiết bị Mesh": "01 Mesh 6"
+   },
+   "g": {
+    "1 tháng": 330000,
+    "3 tháng": 990000,
+    "6 tháng": 1980000,
+    "9 tháng": 2970000,
+    "12/13 tháng": 3960000
+   }
+  },
+  {
+   "n": "Home Cam 3 (2 Mesh)",
+   "nh": "Home Cam + Mesh",
+   "md": "Internet + Camera + Mesh",
+   "tp": {
+    "Tốc độ Fiber VNN": "1Gbps",
+    "Thiết bị Camera + Cloud": "01 Camera Indoor + Cloud (3 ngày)",
+    "Thiết bị Mesh": "02 Mesh 6"
+   },
+   "g": {
+    "1 tháng": 355000,
+    "3 tháng": 1065000,
+    "6 tháng": 2130000,
+    "9 tháng": 3195000,
+    "12/13 tháng": 4260000
+   }
+  },
+  {
+   "n": "HOME SÀNH 2",
+   "nh": "Tích hợp Di động",
+   "md": "Internet + MyTV + gói data/thoại cho cả nhà",
+   "tp": {
+    "FiberVNN": "300 Mbps",
+    "Thoại nhóm": "Thoại nội nhóm giữa các thuê bao di động thành viên",
+    "Data di động của chủ nhóm": "3GB/ngày",
+    "Thoại nội mạng của chủ nhóm": "1500 phút",
+    "Thoại ngoại mạng chủ nhóm": "89 phút",
+    "Số lượng thành viên": "Tối đa 6 thành viên"
+   },
+   "g": {
+    "1 tháng": 249000,
+    "3 tháng": 747000,
+    "6 tháng": 1494000,
+    "12/13 tháng": 2988000
+   }
+  },
+  {
+   "n": "HOME ĐỈNH",
+   "nh": "Tích hợp Di động",
+   "md": "Internet + MyTV + gói data/thoại cho cả nhà",
+   "tp": {
+    "FiberVNN": "500 Mbps",
+    "Truyền hình MyTV": "Truyền hình MyTV (Khách hàng lựa chọn 1 trong 4: MyTV Flex…",
+    "Thoại nhóm": "Thoại nội nhóm giữa các thuê bao di động thành viên",
+    "Data di động của chủ nhóm": "2 GB/ ngày",
+    "Thoại nội mạng của chủ nhóm": "1.000 phút",
+    "Thoại ngoại mạng chủ nhóm": "50 phút",
+    "Số lượng thành viên": "Tối đa 4 thành viên"
+   },
+   "g": {
+    "1 tháng": 369000,
+    "3 tháng": 1107000,
+    "6 tháng": 2214000,
+    "12/13 tháng": 4428000
+   }
+  },
+  {
+   "n": "Home Cam Mật",
+   "nh": "Gói cạnh tranh",
+   "md": "Nhóm giá thấp để giữ/giành khách",
+   "tp": {
+    "Dịch vụ FiberVNN": "300 Mbps",
+    "Dịch vụ MyTV": "MyTV S1 (App) hoặc MyTV S2 (App)",
+    "Thiết bị Camera": "01 Camera Indoor + Cloud (1 ngày)"
+   },
+   "g": {
+    "1 tháng": 220000,
+    "3 tháng": 660000,
+    "6 tháng": 1320000,
+    "12/13 tháng": 2640000
+   }
+  },
+  {
+   "n": "Home Cam Sành",
+   "nh": "Gói cạnh tranh",
+   "md": "Nhóm giá thấp để giữ/giành khách",
+   "tp": {
+    "Dịch vụ FiberVNN": "300 Mbps",
+    "Dịch vụ MyTV": "MyTV S1 (App) hoặc MyTV S2 (App)",
+    "Thiết bị Mesh": "01 Mesh 6",
+    "Thiết bị Camera": "01 Camera Indoor + Cloud (1 ngày)"
+   },
+   "g": {
+    "1 tháng": 235000,
+    "3 tháng": 705000,
+    "6 tháng": 1410000,
+    "12/13 tháng": 2820000
+   }
+  }
+ ],
+ "mytv": [
+  {
+   "ten": "MyTV Flexi 1",
+   "gia": {
+    "Hàng tháng": 65000,
+    "Gói 3 tháng": 195000,
+    "Gói 6 tháng": 390000,
+    "Gói 12/13 tháng": 780000
+   },
+   "mota": "145 kênh TH bao gồm chùm kênh trong nước (VTV, HTV,..), chùm kênh VTVcab, chùm kênh quốc tế (không bao gồm 2 kênh SPOTV), Galaxy cao cấp, VOD có quảng cáo."
+  },
+  {
+   "ten": "MyTV Flexi 2",
+   "gia": {
+    "Hàng tháng": 65000,
+    "Gói 3 tháng": 195000,
+    "Gói 6 tháng": 390000,
+    "Gói 12/13 tháng": 780000
+   },
+   "mota": "146 kênh TH bao gồm chùm kênh trong nước (VTV, HTV,...), chùm kênh SCTV, chùm kênh quốc tế (không bao gồm 2 kênh SPOTV), Galaxy cao cấp, VOD có quảng cáo."
+  },
+  {
+   "ten": "MyTV Film",
+   "gia": {
+    "Hàng tháng": 65000,
+    "Gói 3 tháng": 195000,
+    "Gói 6 tháng": 390000,
+    "Gói 12/13 tháng": 780000
+   },
+   "mota": "117 kênh TH bao gồm kênh VTV1 (không bao gồm VTV2-VTV9), chùm kênh trong nước khác, chùm kênh quốc tế, SPOTV, Galaxy VIP, VOD không quảng cáo."
+  },
+  {
+   "ten": "MyTV Film+",
+   "gia": {
+    "Hàng tháng": 65000,
+    "Gói 3 tháng": 195000,
+    "Gói 6 tháng": 390000,
+    "Gói 12/13 tháng": 780000
+   },
+   "mota": "125 kênh TH, chùm kênh trong nước (VTV, HTV,...), chùm kênh quốc tế (không bao gồm 2 kênh SPOTV), Galaxy VIP, VOD không quảng cáo."
+  },
+  {
+   "ten": "MyTV VIP",
+   "gia": {
+    "Hàng tháng": 95000,
+    "Gói 3 tháng": 285000,
+    "Gói 6 tháng": 570000,
+    "Gói 12/13 tháng": 1140000
+   },
+   "mota": "168 kênh TH bao gồm chùm kênh trong nước (VTV, HTV,...), chùm kênh VTVcab, chùm kênh SCTV, chùm kênh quốc tế, SPOTV, Galaxy VIP, VOD không quảng cáo."
+  },
+  {
+   "ten": "Cơ bản (VTCI)",
+   "gia": {
+    "Hàng tháng": 22000,
+    "Gói 3 tháng": 66000,
+    "Gói 6 tháng": 132000,
+    "Gói 12/13 tháng": 264000
+   },
+   "mota": "97 kênh truyền hình cơ bản. VOD có quảng cáo"
+  }
+ ],
+ "addon": [
+  {
+   "ten": "VTVcab",
+   "gia": 20000,
+   "mota": "Chùm kênh VTVcab"
+  },
+  {
+   "ten": "SCTV",
+   "gia": 20000,
+   "mota": "Chùm kênh SCTV"
+  },
+  {
+   "ten": "Danet",
+   "gia": 55000,
+   "mota": "Cung cấp hàng nghìn giờ phim hấp dẫn: phim chiếu rạp, phim Hollywood, phim bom tấn, phim Châu Á và phim Việt đặc sắc,…"
+  },
+  {
+   "ten": "Galaxy VIP",
+   "gia": 22000,
+   "mota": "Kho nội dung Galaxy cao cấp: Phim Việt chiếu rạp, Phim Hollywood, phim bom tấn, phim song song…"
+  },
+  {
+   "ten": "HBO GO",
+   "gia": 50000,
+   "mota": "Hơn 6.000 giờ phim VOD hấp dẫn;"
+  },
+  {
+   "ten": "Eloplay",
+   "gia": 22000,
+   "mota": "Game Eloplay là bộ sưu tập các trò chơi có thể chơi được ngay trong ứng dụng MyTV trên SmartTV/Smart Box."
+  },
+  {
+   "ten": "Tắt quảng cáo",
+   "gia": 20000,
+   "mota": "Xem nội dung không bị làm phiền bởi quảng cáo"
+  }
+ ],
+ "mesh5": [
+  {
+   "ten": "Pack 1 Mesh 5",
+   "nd": "01 Mesh 5",
+   "gia": {
+    "Hàng tháng": 20000,
+    "6-9 tháng": 120000,
+    "12-18 tháng": 240000
+   }
+  },
+  {
+   "ten": "Pack 2 Mesh 5",
+   "nd": "02 Mesh 5",
+   "gia": {
+    "Hàng tháng": 30000,
+    "6-9 tháng": 180000,
+    "12-18 tháng": 360000
+   }
+  },
+  {
+   "ten": "Pack 3 Mesh 5",
+   "nd": "03 Mesh 5",
+   "gia": {
+    "Hàng tháng": 40000,
+    "6-9 tháng": 240000,
+    "12-18 tháng": 480000
+   }
+  }
+ ],
+ "mesh6": [
+  {
+   "ten": "Pack 1",
+   "sl": "1",
+   "don_gia": 30000,
+   "tong": 30000
+  },
+  {
+   "ten": "Pack 2",
+   "sl": "2",
+   "don_gia": 25000,
+   "tong": 50000
+  },
+  {
+   "ten": "Pack 3",
+   "sl": "3",
+   "don_gia": 25000,
+   "tong": 75000
+  },
+  {
+   "ten": "Pack 4",
+   "sl": "4",
+   "don_gia": 25000,
+   "tong": 100000
+  },
+  {
+   "ten": "Pack 5",
+   "sl": "5 (Đối với KH thông thường)",
+   "don_gia": 24000,
+   "tong": 120000
+  },
+  {
+   "ten": "Pack 5*",
+   "sl": "5 (KHCC KHDN)",
+   "don_gia": 20000,
+   "tong": 100000
+  },
+  {
+   "ten": "Pack 6",
+   "sl": "6",
+   "don_gia": 23333,
+   "tong": 140000
+  },
+  {
+   "ten": "Pack 7",
+   "sl": "7",
+   "don_gia": 22857,
+   "tong": 160000
+  },
+  {
+   "ten": "Pack 8",
+   "sl": "8",
+   "don_gia": 22500,
+   "tong": 180000
+  },
+  {
+   "ten": "Pack 9",
+   "sl": "9",
+   "don_gia": 22222,
+   "tong": 200000
+  },
+  {
+   "ten": "Pack 10",
+   "sl": "10",
+   "don_gia": 22000,
+   "tong": 220000
+  },
+  {
+   "ten": "Pack 10*",
+   "sl": "10 (KHCC, KHDN)",
+   "don_gia": 20000,
+   "tong": 200000
+  }
+ ],
+ "cloud": [
+  {
+   "ten": "Cloud 7 ngày",
+   "indoor": 40000,
+   "outdoor": 60000
+  },
+  {
+   "ten": "Cloud 15 ngày",
+   "indoor": 60000,
+   "outdoor": 80000
+  },
+  {
+   "ten": "Cloud 30 ngày",
+   "indoor": 90000,
+   "outdoor": 110000
+  }
+ ],
+ "campack": [
+  {
+   "ten": "Pack 01 Cam",
+   "nd": "01 Camera Indoor + 01 cloud 03 ngày",
+   "gia": {
+    "Hàng tháng": 30000,
+    "Gói 3 tháng": 90000,
+    "Gói 6 tháng": 180000,
+    "Gói 12/13 tháng": 360000
+   }
+  },
+  {
+   "ten": "Pack 03 Cam",
+   "nd": "03 Camera Indoor + 03 cloud 03 ngày",
+   "gia": {
+    "Hàng tháng": 80000,
+    "Gói 3 tháng": 240000,
+    "Gói 6 tháng": 480000,
+    "Gói 12/13 tháng": 960000
+   }
+  },
+  {
+   "ten": "Pack 05 Cam",
+   "nd": "05 Camera Indoor + 05 cloud 03 ngày",
+   "gia": {
+    "Hàng tháng": 130000,
+    "Gói 3 tháng": 390000,
+    "Gói 6 tháng": 780000,
+    "Gói 12/13 tháng": 1560000
+   }
+  },
+  {
+   "ten": "Pack 10 Cam",
+   "nd": "10 Camera Indoor + 10 cloud 03 ngày",
+   "gia": {
+    "Hàng tháng": 250000,
+    "Gói 3 tháng": 750000,
+    "Gói 6 tháng": 1500000,
+    "Gói 12/13 tháng": 3000000
+   }
+  },
+  {
+   "ten": "Pack 01 Cam Out",
+   "nd": "01 Camera Outdoor + 01 cloud 03 ngày",
+   "gia": {
+    "Hàng tháng": 40000,
+    "Gói 3 tháng": 120000,
+    "Gói 6 tháng": 240000,
+    "Gói 12/13 tháng": 480000
+   }
+  },
+  {
+   "ten": "Pack 01 Cam In + 01 Cam Out",
+   "nd": "01 Camera Indoor + 01 Camera Outdoor + 02 cloud 03 ngày",
+   "gia": {
+    "Hàng tháng": 66000,
+    "Gói 3 tháng": 198000,
+    "Gói 6 tháng": 396000,
+    "Gói 12/13 tháng": 792000
+   }
+  }
+ ],
+ "camthe": [
+  {
+   "ten": "Cam_IN_64GB",
+   "cam": "01 Camera Indoor (Loại IS310P)",
+   "the": "01 thẻ nhớ, dung lượng 64GB",
+   "gia": 30000
+  },
+  {
+   "ten": "Cam_OUT_64GB",
+   "cam": "01 Camera Outdoor (Loại ES311P)",
+   "the": "01 thẻ nhớ, dung lượng 64GB",
+   "gia": 50000
+  }
+ ],
+ "khdn": [
+  {
+   "n": "FiberXtra2",
+   "nh": "Fiber Xtra — tốc độ cao, IP tĩnh",
+   "tp": {
+    "Tốc độ trong nước": "400 Mbps",
+    "IPv4": "01 Wan tĩnh",
+    "IPv6": "01 subnet /56 Lan tĩnh"
+   },
+   "g": {
+    "1 tháng": 550000,
+    "6/7 tháng": 3300000,
+    "12/13/14 tháng": 6600000
+   }
+  },
+  {
+   "n": "FiberXtra3",
+   "nh": "Fiber Xtra — tốc độ cao, IP tĩnh",
+   "tp": {
+    "Tốc độ trong nước": "600 Mbps",
+    "IPv4": "01 Wan tĩnh",
+    "IPv6": "01 subnet /56 Lan tĩnh"
+   },
+   "g": {
+    "1 tháng": 1760000,
+    "6/7 tháng": 10560000,
+    "12/13/14 tháng": 21120000
+   }
+  },
+  {
+   "n": "FiberXtra4",
+   "nh": "Fiber Xtra — tốc độ cao, IP tĩnh",
+   "tp": {
+    "Tốc độ trong nước": "800 Mbps",
+    "IPv4": "01 Wan tĩnh + 1 Block 08 IPv4 Lan",
+    "IPv6": "01 subnet /56 Lan tĩnh"
+   },
+   "g": {
+    "1 tháng": 5500000,
+    "6/7 tháng": 33000000,
+    "12/13/14 tháng": 66000000
+   }
+  },
+  {
+   "n": "FiberXtra5",
+   "nh": "Fiber Xtra — tốc độ cao, IP tĩnh",
+   "tp": {
+    "Tốc độ trong nước": "1000 Mbps",
+    "IPv4": "01 Wan tĩnh + 1 Block 08 IPv4 Lan",
+    "IPv6": "01 subnet /56 Lan tĩnh"
+   },
+   "g": {
+    "1 tháng": 8800000,
+    "6/7 tháng": 52800000,
+    "12/13/14 tháng": 105600000
+   }
+  },
+  {
+   "n": "FiberXtra6",
+   "nh": "Fiber Xtra — tốc độ cao, IP tĩnh",
+   "tp": {
+    "Tốc độ trong nước": "2000 Mbps",
+    "IPv4": "01 Wan tĩnh + 1 Block 08 IPv4 Lan",
+    "IPv6": "01 subnet /56 Lan tĩnh"
+   },
+   "g": {
+    "1 tháng": 16500000,
+    "6/7 tháng": 99000000,
+    "12/13/14 tháng": 198000000
+   }
+  },
+  {
+   "n": "FiberEco1",
+   "nh": "Fiber Premium — có cam kết quốc tế",
+   "tp": {
+    "Tốc độ trong nước": "150 Mbps",
+    "Quốc tế cam kết": "3 Mbps",
+    "IPv4": "IP động",
+    "IPv6": "01 subnet /56 Lan tĩnh"
+   },
+   "g": {
+    "1 tháng": 352000,
+    "6/7 tháng": 2112000,
+    "12/13/14 tháng": 4224000
+   }
+  },
+  {
+   "n": "FiberEco2",
+   "nh": "Fiber Premium — có cam kết quốc tế",
+   "tp": {
+    "Tốc độ trong nước": "250 Mbps",
+    "Quốc tế cam kết": "4 Mbps",
+    "IPv4": "IP động",
+    "IPv6": "01 subnet /56 Lan tĩnh"
+   },
+   "g": {
+    "1 tháng": 418000,
+    "6/7 tháng": 2508000,
+    "12/13/14 tháng": 5016000
+   }
+  },
+  {
+   "n": "FiberEco3",
+   "nh": "Fiber Premium — có cam kết quốc tế",
+   "tp": {
+    "Tốc độ trong nước": "300 Mbps",
+    "Quốc tế cam kết": "6 Mbps",
+    "IPv4": "01 Wan tĩnh",
+    "IPv6": "01 subnet /56 Lan tĩnh"
+   },
+   "g": {
+    "1 tháng": 858000,
+    "6/7 tháng": 5148000,
+    "12/13/14 tháng": 10296000
+   }
+  },
+  {
+   "n": "FiberEco4",
+   "nh": "Fiber Premium — có cam kết quốc tế",
+   "tp": {
+    "Tốc độ trong nước": "400 Mbps",
+    "Quốc tế cam kết": "8 Mbps",
+    "IPv4": "01 Wan tĩnh",
+    "IPv6": "01 subnet/56 Lan Tĩnh"
+   },
+   "g": {
+    "1 tháng": 1100000,
+    "6/7 tháng": 6600000,
+    "12/13/14 tháng": 13200000
+   }
+  },
+  {
+   "n": "Fiber4",
+   "nh": "Fiber Premium — có cam kết quốc tế",
+   "tp": {
+    "Tốc độ trong nước": "400 Mbps",
+    "Quốc tế cam kết": "12 Mbps",
+    "Dự phòng 4G/5G": "20 GB",
+    "IPv4": "01 Wan tĩnh",
+    "IPv6": "01 subnet/56 Lan Tĩnh"
+   },
+   "g": {
+    "1 tháng": 2200000,
+    "6/7 tháng": 13200000,
+    "12/13/14 tháng": 26400000
+   }
+  },
+  {
+   "n": "FiberEco5",
+   "nh": "Fiber Premium — có cam kết quốc tế",
+   "tp": {
+    "Tốc độ trong nước": "500 Mbps",
+    "Quốc tế cam kết": "16 Mbps",
+    "Dự phòng 4G/5G": "20 GB",
+    "IPv4": "01 Wan tĩnh",
+    "IPv6": "01 subnet/56 Lan Ipv6 Lan Tĩnh"
+   },
+   "g": {
+    "1 tháng": 3520000,
+    "6/7 tháng": 21120000,
+    "12/13/14 tháng": 42240000
+   }
+  },
+  {
+   "n": "Fiber5",
+   "nh": "Fiber Premium — có cam kết quốc tế",
+   "tp": {
+    "Tốc độ trong nước": "500 Mbps",
+    "Quốc tế cam kết": "24 Mbps",
+    "Dự phòng 4G/5G": "30 GB",
+    "IPv4": "01 Wan tĩnh +01 Block 08 Lan Tĩnh",
+    "IPv6": "01 subnet/56 Ipv6 Lan Tĩnh"
+   },
+   "g": {
+    "1 tháng": 5500000,
+    "6/7 tháng": 33000000,
+    "12/13/14 tháng": 66000000
+   }
+  },
+  {
+   "n": "Fiber6",
+   "nh": "Fiber Premium — có cam kết quốc tế",
+   "tp": {
+    "Tốc độ trong nước": "600 Mbps",
+    "Quốc tế cam kết": "32 Mbps",
+    "Dự phòng 4G/5G": "30GB",
+    "IPv4": "01 Wan tĩnh +01 Block 08 Lan Tĩnh",
+    "IPv6": "01 subnet /56 Ipv6 Lan Tĩnh"
+   },
+   "g": {
+    "1 tháng": 9900000,
+    "6/7 tháng": 59400000,
+    "12/13/14 tháng": 118800000
+   }
+  },
+  {
+   "n": "FiberVip6",
+   "nh": "Fiber Premium — có cam kết quốc tế",
+   "tp": {
+    "Tốc độ trong nước": "600 Mbps",
+    "Quốc tế cam kết": "45 Mbps",
+    "Dự phòng Fiber": "FiberXtra1",
+    "IPv4": "01 Wan tĩnh +01 Block 08 Lan Tĩnh",
+    "IPv6": "01 subnet /56 Ipv6 Lan Tĩnh"
+   },
+   "g": {
+    "1 tháng": 13200000,
+    "6/7 tháng": 79200000,
+    "12/13/14 tháng": 158400000
+   }
+  },
+  {
+   "n": "Fiber7",
+   "nh": "Fiber Premium — có cam kết quốc tế",
+   "tp": {
+    "Tốc độ trong nước": "800 Mbps",
+    "Quốc tế cam kết": "55 Mbps",
+    "Dự phòng 4G/5G": "50 GB",
+    "IPv4": "01 Wan tĩnh +01 Block 08 Lan Tĩnh",
+    "IPv6": "01 subnet/56 Ipv6 Lan Tĩnh"
+   },
+   "g": {
+    "1 tháng": 17600000,
+    "6/7 tháng": 105600000,
+    "12/13/14 tháng": 211200000
+   }
+  },
+  {
+   "n": "FiberVip7",
+   "nh": "Fiber Premium — có cam kết quốc tế",
+   "tp": {
+    "Tốc độ trong nước": "800 Mbps",
+    "Quốc tế cam kết": "65 Mbps",
+    "Dự phòng Fiber": "FiberXtra1",
+    "IPv4": "01 Wan tĩnh +01 Block 08 Lan Tĩnh",
+    "IPv6": "01 subnet/56 Ipv6 Lan Tĩnh"
+   },
+   "g": {
+    "1 tháng": 22000000,
+    "6/7 tháng": 132000000,
+    "12/13/14 tháng": 264000000
+   }
+  },
+  {
+   "n": "Fiber8",
+   "nh": "Fiber Premium — có cam kết quốc tế",
+   "tp": {
+    "Tốc độ trong nước": "1000 Mbps",
+    "Quốc tế cam kết": "80 Mbps",
+    "Dự phòng 4G/5G": "50GB",
+    "IPv4": "01 Wan tĩnh +01 Block 08 Lan Tĩnh",
+    "IPv6": "01 subnet/56 Ipv6 Lan Tĩnh"
+   },
+   "g": {
+    "1 tháng": 27500000,
+    "6/7 tháng": 165000000,
+    "12/13/14 tháng": 330000000
+   }
+  },
+  {
+   "n": "FiberVip8",
+   "nh": "Fiber Premium — có cam kết quốc tế",
+   "tp": {
+    "Tốc độ trong nước": "1000 Mbps",
+    "Quốc tế cam kết": "100 Mbps",
+    "Dự phòng Fiber": "FiberXtra2",
+    "IPv4": "01 Wan tĩnh +01 Block 08 Lan Tĩnh",
+    "IPv6": "01 subnet/56 Ipv6 Lan Tĩnh"
+   },
+   "g": {
+    "1 tháng": 33000000,
+    "6/7 tháng": 198000000,
+    "12/13/14 tháng": 396000000
+   }
+  },
+  {
+   "n": "FiberVip9",
+   "nh": "Fiber Premium — có cam kết quốc tế",
+   "tp": {
+    "Tốc độ trong nước": "2500 Mbps",
+    "Quốc tế cam kết": "200 Mbps",
+    "Dự phòng Fiber": "FiberXtra2",
+    "IPv4": "01 Wan tĩnh +01 Block 08 Lan Tĩnh",
+    "IPv6": "01 subnet /56 Ipv6 Lan Tĩnh"
+   },
+   "g": {
+    "1 tháng": 60500000,
+    "6/7 tháng": 363000000,
+    "12/13/14 tháng": 726000000
+   }
+  },
+  {
+   "n": "FiberS1",
+   "nh": "Fiber S & Fiber Wifi — phổ thông",
+   "tp": {
+    "Tốc độ trong nước": "500 Mbps",
+    "Quốc tế cam kết": "2 Mbps",
+    "IP": "IP động"
+   },
+   "g": {
+    "1 tháng": 418000,
+    "6/7 tháng": 2508000,
+    "12/13/14 tháng": 5016000
+   }
+  },
+  {
+   "n": "FiberS2",
+   "nh": "Fiber S & Fiber Wifi — phổ thông",
+   "tp": {
+    "Tốc độ trong nước": "800 Mbps",
+    "Quốc tế cam kết": "6 Mbps",
+    "IP": "IP động"
+   },
+   "g": {
+    "1 tháng": 660000,
+    "6/7 tháng": 3960000,
+    "12/13/14 tháng": 7920000
+   }
+  },
+  {
+   "n": "FiberS3",
+   "nh": "Fiber S & Fiber Wifi — phổ thông",
+   "tp": {
+    "Tốc độ trong nước": "1000 Mbps",
+    "Quốc tế cam kết": "12 Mbps",
+    "IP": "IP động"
+   },
+   "g": {
+    "1 tháng": 814000,
+    "6/7 tháng": 4884000,
+    "12/13/14 tháng": 9768000
+   }
+  },
+  {
+   "n": "FiberWifi1",
+   "nh": "Fiber S & Fiber Wifi — phổ thông",
+   "tp": {
+    "Tốc độ trong nước": "500 Mbps",
+    "Quốc tế cam kết": "2 Mbps",
+    "IP": "IP động",
+    "Thiết bị Mesh": "01 thiết Wifi Mesh 6"
+   },
+   "g": {
+    "1 tháng": 473000,
+    "6/7 tháng": 2838000,
+    "12/13/14 tháng": 5676000
+   }
+  },
+  {
+   "n": "FiberWifi2",
+   "nh": "Fiber S & Fiber Wifi — phổ thông",
+   "tp": {
+    "Tốc độ trong nước": "800 Mbps",
+    "Quốc tế cam kết": "6 Mbps",
+    "IP": "IP động",
+    "Thiết bị Mesh": "02 thiết Wifi Mesh 6"
+   },
+   "g": {
+    "1 tháng": 748000,
+    "6/7 tháng": 4488000,
+    "12/13/14 tháng": 8976000
+   }
+  },
+  {
+   "n": "FiberWifi3",
+   "nh": "Fiber S & Fiber Wifi — phổ thông",
+   "tp": {
+    "Tốc độ trong nước": "1000 Mbps",
+    "Quốc tế cam kết": "12 Mbps",
+    "IP": "IP động",
+    "Thiết bị Mesh": "02 thiết Wifi Mesh 6"
+   },
+   "g": {
+    "1 tháng": 902000,
+    "6/7 tháng": 5412000,
+    "12/13/14 tháng": 10824000
+   }
+  },
+  {
+   "n": "FiberPro1",
+   "nh": "FiberPro — 2,5 Gbps + 3 Mesh",
+   "tp": {
+    "Tốc độ trong nước": "2500 Mbps",
+    "Quốc tế cam kết": "15 Mbps",
+    "IP": "IP động",
+    "Thiết bị Mesh": "03 thiết Wifi Mesh 6"
+   },
+   "g": {
+    "1 tháng": 1450000,
+    "3 tháng": 4350000,
+    "6 tháng": 8700000,
+    "12/13 tháng": 17400000
+   }
+  },
+  {
+   "n": "VP3",
+   "nh": "Văn phòng Data — kèm ưu đãi di động",
+   "tp": {
+    "Tốc độ trong nước": "200 Mbps",
+    "IP": "IP động",
+    "Gói di động kèm": "Ưu đãi di động nội/ngoại mạng"
+   },
+   "g": {
+    "1 tháng": 298000,
+    "6 tháng": 1501920,
+    "12 tháng": 3003840
+   }
+  },
+  {
+   "n": "VP5",
+   "nh": "Văn phòng Data — kèm ưu đãi di động",
+   "tp": {
+    "Tốc độ trong nước": "200 Mbps",
+    "IP": "01 IP tĩnh IPV4/IPV6",
+    "Gói di động kèm": "Ưu đãi di động nội/ngoại mạng"
+   },
+   "g": {
+    "1 tháng": 568000,
+    "6 tháng": 2862720,
+    "12 tháng": 5725440
+   }
+  },
+  {
+   "n": "VP10",
+   "nh": "Văn phòng Data — kèm ưu đãi di động",
+   "tp": {
+    "Tốc độ trong nước": "250 Mbps",
+    "IP": "01 IP tĩnh IPV4/IPV6",
+    "Gói di động kèm": "Ưu đãi di động nội/ngoại mạng"
+   },
+   "g": {
+    "1 tháng": 768000,
+    "6 tháng": 3870720,
+    "12 tháng": 7741440
+   }
+  },
+  {
+   "n": "VP15",
+   "nh": "Văn phòng Data — kèm ưu đãi di động",
+   "tp": {
+    "Tốc độ trong nước": "250 Mbps",
+    "IP": "01 IP tĩnh IPV4/IPV6",
+    "Gói di động kèm": "Ưu đãi di động nội/ngoại mạng"
+   },
+   "g": {
+    "1 tháng": 1098000,
+    "6 tháng": 5533920,
+    "12 tháng": 11067840
+   }
+  },
+  {
+   "n": "VP20",
+   "nh": "Văn phòng Data — kèm ưu đãi di động",
+   "tp": {
+    "Tốc độ trong nước": "300 Mbps",
+    "Quốc tế cam kết": "3 Mbps",
+    "IP": "01 IP tĩnh IPV4/IPV6",
+    "Gói di động kèm": "Ưu đãi di động nội/ngoại mạng"
+   },
+   "g": {
+    "1 tháng": 1268000,
+    "6 tháng": 6390720,
+    "12 tháng": 12781440
+   }
+  },
+  {
+   "n": "VP30",
+   "nh": "Văn phòng Data — kèm ưu đãi di động",
+   "tp": {
+    "Tốc độ trong nước": "300 Mbps",
+    "Quốc tế cam kết": "3 Mbps",
+    "IP": "01 IP tĩnh IPV4/IPV6",
+    "Gói di động kèm": "Ưu đãi di động nội/ngoại mạng"
+   },
+   "g": {
+    "1 tháng": 1950000,
+    "6 tháng": 9828000,
+    "12 tháng": 19656000
+   }
+  },
+  {
+   "n": "FiberM1",
+   "nh": "Fiber M — đa phiên đồng thời",
+   "tp": {
+    "Tốc độ / 1 phiên": "80 Mbps",
+    "Số phiên tối đa": "10",
+    "IP": "IP động"
+   },
+   "g": {
+    "1 tháng": 390000,
+    "6/7 tháng": 2340000,
+    "12/13/14 tháng": 4680000
+   }
+  },
+  {
+   "n": "FiberM2",
+   "nh": "Fiber M — đa phiên đồng thời",
+   "tp": {
+    "Tốc độ / 1 phiên": "80 Mbps",
+    "Số phiên tối đa": "15",
+    "IP": "IP động"
+   },
+   "g": {
+    "1 tháng": 786000,
+    "6/7 tháng": 4716000,
+    "12/13/14 tháng": 9432000
+   }
+  },
+  {
+   "n": "FiberM3",
+   "nh": "Fiber M — đa phiên đồng thời",
+   "tp": {
+    "Tốc độ / 1 phiên": "60 Mbps",
+    "Số phiên tối đa": "32",
+    "IP": "IP động"
+   },
+   "g": {
+    "1 tháng": 1286000,
+    "6/7 tháng": 7716000,
+    "12/13/14 tháng": 15432000
+   }
+  },
+  {
+   "n": "FiberOn3",
+   "nh": "FiberOn",
+   "tp": {
+    "Tốc độ trong nước": "600 Mbps",
+    "Quốc tế cam kết": "12 Mbps",
+    "IPv4": "01 Wan tĩnh",
+    "IPv6": "01 subnet /56 Lan tĩnh"
+   },
+   "g": {
+    "1 tháng": 2750000,
+    "6/7 tháng": 16500000,
+    "12/13/14 tháng": 33000000
+   }
+  },
+  {
+   "n": "PF1",
+   "nh": "Pharmacy — phần mềm nhà thuốc + Internet",
+   "tp": {
+    "VNPT Pharmacy": "Thuê phần mềm VNPT Pharmacy",
+    "FiberVNN": "FiberXtra1 + Tốc độ trong nước 300Mbps + IP động + 01 subnet"
+   },
+   "g": {
+    "1 tháng": 386000
+   }
+  },
+  {
+   "n": "PF2",
+   "nh": "Pharmacy — phần mềm nhà thuốc + Internet",
+   "tp": {
+    "VNPT Pharmacy": "Thuê phần mềm VNPT Pharmacy",
+    "FiberVNN": "FiberXtra1 + Tốc độ trong nước 300Mbps + IP động + 01 subnet"
+   },
+   "g": {
+    "1 tháng": 650000
+   }
+  }
+ ],
+ "khdnip": [
+  {
+   "n": "01 IPv4 Wan tĩnh",
+   "g": {
+    "1 tháng": 220000,
+    "6/7 tháng": 1320000,
+    "12/13/14 tháng": 2640000
+   }
+  },
+  {
+   "n": "01 block 08 IPv4 Lan tĩnh",
+   "g": {
+    "1 tháng": 550000,
+    "6/7 tháng": 3300000,
+    "12/13/14 tháng": 6600000
+   }
+  },
+  {
+   "n": "1 Block 16 IPv4 Lan tĩnh",
+   "g": {
+    "1 tháng": 1100000,
+    "6/7 tháng": 6600000,
+    "12/13/14 tháng": 13200000
+   }
+  },
+  {
+   "n": "1 Block 32 IPv4 Lan tĩnh",
+   "g": {
+    "1 tháng": 2200000,
+    "6/7 tháng": 13200000,
+    "12/13/14 tháng": 26400000
+   }
+  }
+ ]
+}
